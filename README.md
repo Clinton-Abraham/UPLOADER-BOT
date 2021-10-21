@@ -1,4 +1,4 @@
-## Uploader X  Bot
+## Uploader X  Bot > 🛑 Don't Use This Branch Build in Progress 🥴
 ---
 
 Telegram RoBot to Upload Links.
@@ -22,9 +22,6 @@ https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest
 ```
 heroku/python
 ```
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/Clinton-Abraham/UPLOADER-BOT)
-
 
 
 ## Credits, and Thanks to
