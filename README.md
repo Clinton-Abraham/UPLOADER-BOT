@@ -34,5 +34,6 @@ heroku/python
 * [Yoily](https://t.me/YoilyL) for his [UploaditBot](https://telegram.dog/UploaditBot)
 * [@AbirHasan2005](https://t.me/AbirHasan2005) for his [database.py](https://github.com/AbirHasan2005/VideoCompress/blob/main/bot/database/database.py)
 * [@DC4_WARRIOR](https://t.me/Space_X_bots)
+* [@xgorn](https://t.me/xgorn)
 #### LICENSE
 - GPLv3
