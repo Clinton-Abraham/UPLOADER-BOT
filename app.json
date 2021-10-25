@@ -1,5 +1,5 @@
 {
-  "name": "X-URL-Uploader",
+  "name": "Uploader X Bot",
   "description": "Telegram Bot to Upload URLs to Telegram as File and Video.",
   "keywords": [
     "telegram",
@@ -48,11 +48,6 @@
     },
     "BANNED_USERS": {
       "description": "Banned Unwanted members..",
-      "value": "",
-      "required": false
-    },
-    "UPDATE_CHANNEL": {
-      "description": "For Force Subscribe. Paste your Update channel USERNAME (without @)..",
       "value": "",
       "required": false
     },
