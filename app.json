@@ -42,6 +42,11 @@
       "description": "Your MongoDB URI",
       "value": ""
     },
+    "UPDATE_CHANNEL": {
+      "description": "For Force Subscribe. Paste your Update channel USERNAME (without @)..",
+      "value": "",
+      "required": false
+    },
     "SESSION_NAME": {
       "description": "Your Session Name",
       "value": "URL-UPLOADER"
