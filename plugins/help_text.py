@@ -56,4 +56,67 @@ async def start(bot, update):
                                              [ InlineKeyboardButton(text="🛑 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 🛑", url="https://t.me/TeleRoid14"),
                                                InlineKeyboardButton(text=" 𝐀𝐛𝐨𝐮𝐭 𝐌𝐞 ", url="https://t.me/TheTeleRoid") ],
                                              [ InlineKeyboardButton(text="♻ 𝐇𝐞𝐥𝐩 ", callback_data="HELP_USER"),                                                
-                                               InlineKeyboardButton(text="👥 𝐀𝐛𝐨𝐮𝐭", callback_data="ABOUT_TEXT") ] ] ) )
+                                               InlineKeyboardButton(text="👥 𝐀𝐛𝐨𝐮𝐭", callback_data="aboutbot") ] ] ) )
+
+@Bot.on_callback_query()
+async def button(bot: Client, cmd: CallbackQuery):
+
+    cb_data = cmd.data
+    if "aboutbot" in cb_data:
+        await cmd.message.edit(
+            Config.ABOUT_TEXT,
+            parse_mode="Markdown",
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+					[
+						InlineKeyboardButton("👥 𝐇𝐞𝐥𝐩", callback_data="help"),
+						InlineKeyboardButton("🌐 𝐒𝐨𝐮𝐫𝐜𝐞 𝐂𝐨𝐝𝐞", url="https://t.me/MoviesFlixers_DL")
+					],
+					[
+						InlineKeyboardButton("🏠 𝐇𝐨𝐦𝐞", callback_data="gotohome") 
+					]
+	        ]
+            )
+        )
+
+    elif "help" in cb_data:
+        await cmd.message.edit(
+            Config.HELP_USER,
+            parse_mode="Markdown",
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                                        [
+						InlineKeyboardButton("𝐒𝐨𝐮𝐫𝐜𝐞 𝐂𝐨𝐝𝐞𝐬 𝐨𝐟 𝐁𝐨𝐭 ", url="https://t.me/Moviesflixers_DL")
+					],
+					[
+						InlineKeyboardButton("👥 𝐀𝐛𝐨𝐮𝐭 ", callback_data="aboutbot"),
+						InlineKeyboardButton("🏠 𝐇𝐨𝐦𝐞", callback_data="gotohome")
+					]
+                ]
+            )
+        )
+
+    elif "gotohome" in cb_data:
+        await cmd.message.edit(
+            Config.START_TEXT.format(cmd.message.chat.first_name, cmd.message.chat.id),
+            parse_mode="Markdown",
+            disable_web_page_preview=True,
+            reply_markup=InlineKeyboardMarkup(
+                [
+                    [
+						InlineKeyboardButton("🛑 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 🛑", url="https://t.me/TeleRoid14"),
+						InlineKeyboardButton("⭕ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 ⭕", url="https://t.me/TeleRoidGroup")
+					],
+					[
+						InlineKeyboardButton("👥 𝐀𝐛𝐨𝐮𝐭 ", callback_data="aboutbot"),
+						InlineKeyboardButton("🗣️ 𝐇𝐞𝐥𝐩 ", callback_data="help")
+					], 
+                                        [
+						InlineKeyboardButton("🌐 𝐆𝐢𝐭𝐡𝐮𝐛 ", url="https://GitHub.com/PredatorHackerzZ"),
+						InlineKeyboardButton("📢 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲", url="https://t.me/MoviesFlixers_DL")
+	            ]
+                ]
+            )
+        )
