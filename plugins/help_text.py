@@ -73,12 +73,12 @@ async def about(bot, update):
                                                InlineKeyboardButton(text="👤 𝐆𝐢𝐭𝐡𝐮𝐛 👤", url="https://github.com/PredatorHackerzZ") ] ] ) )
 
 @Clinton.on_callback_query()
-async def button(bot: Client, cmd: CallbackQuery):
+async def button(bot: Clinton, cmd: CallbackQuery):
 
     cb_data = cmd.data
     if "aboutbot" in cb_data:
         await cmd.message.edit(
-            Config.ABOUT_TEXT,
+            Translation.ABOUT_TEXT,
             parse_mode="Markdown",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -96,7 +96,7 @@ async def button(bot: Client, cmd: CallbackQuery):
 
     elif "help" in cb_data:
         await cmd.message.edit(
-            Config.HELP_USER,
+            Translation.HELP_USER,
             parse_mode="Markdown",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -114,7 +114,7 @@ async def button(bot: Client, cmd: CallbackQuery):
 
     elif "gotohome" in cb_data:
         await cmd.message.edit(
-            Config.START_TEXT.format(cmd.message.chat.first_name, cmd.message.chat.id),
+            Translation.START_TEXT.format(cmd.message.chat.first_name, cmd.message.chat.id),
             parse_mode="Markdown",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
