@@ -48,10 +48,11 @@ async def start(bot, update):
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.START_TEXT.format(update.from_user.mention),
+        parse_mode="html",
+        disable_web_page_preview=True,
+        reply_to_message_id=update.message_id,
         reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="⭕️ 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 ⭕️", url="https://t.me/TeleRoidGroup") ], 
                                              [ InlineKeyboardButton(text="🛑 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 🛑", url="https://t.me/TeleRoid14"),
                                                InlineKeyboardButton(text=" 𝐀𝐛𝐨𝐮𝐭 𝐌𝐞 ", url="https://t.me/TheTeleRoid") ],
                                              [ InlineKeyboardButton(text="♻ 𝐇𝐞𝐥𝐩 ", callback_data="HELP_USER"),                                                
                                                InlineKeyboardButton(text="👥 𝐀𝐛𝐨𝐮𝐭", callback_data="ABOUT_TEXT") ] ] ) )
-        reply_to_message_id=update.message_id
-    )
