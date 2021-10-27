@@ -53,7 +53,7 @@ async def start(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
         reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="💰 𝐃𝐨𝐧𝐚𝐭𝐞 💰", url="https://PayPal.me/AbhishekKumarIN47") ], 
-                                             [ InlineKeyboardButton(text="🛑 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 🛑", url="https://t.me/TeleRoid14"),
+                                             [ InlineKeyboardButton(text="⭕ 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 ⭕", url="https://t.me/TeleRoid14"),
                                                InlineKeyboardButton(text="⭕️ 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 ⭕️", url="https://t.me/TeleRoidGroup") ],
                                              [ InlineKeyboardButton(text="♻ 𝐇𝐞𝐥𝐩 ", callback_data="help"),                                                
                                                InlineKeyboardButton(text="👥 𝐀𝐛𝐨𝐮𝐭", callback_data="aboutbot") ] ] ) )
@@ -69,11 +69,11 @@ async def about(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
         reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="⭕️ 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 ⭕️", url="https://t.me/TeleRoidGroup") ],
-                                             [ InlineKeyboardButton(text="🛑 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 🛑", url="https://t.me/TeleRoid14"),
+                                             [ InlineKeyboardButton(text="⭕ 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 ⭕", url="https://t.me/TeleRoid14"),
                                                InlineKeyboardButton(text="👤 𝐆𝐢𝐭𝐡𝐮𝐛 👤", url="https://github.com/PredatorHackerzZ") ] ] ) )
 
 @Clinton.on_callback_query()
-async def button(bot: Clinton, cmd: CallbackQuery):
+async def button(bot, update):
 
     cb_data = cmd.data
     if "aboutbot" in cb_data:
