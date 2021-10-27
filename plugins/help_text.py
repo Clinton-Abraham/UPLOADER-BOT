@@ -75,9 +75,9 @@ async def about(bot, update):
 @Clinton.on_callback_query()
 async def button(bot, update):
 
-    cb_data = cmd.data
+    cb_data = update.data
     if "aboutbot" in cb_data:
-        await cmd.message.edit(
+        await update.message.edit(
             Translation.ABOUT_TEXT,
             parse_mode="Markdown",
             disable_web_page_preview=True,
@@ -95,7 +95,7 @@ async def button(bot, update):
         )
 
     elif "help" in cb_data:
-        await cmd.message.edit(
+        await update.message.edit(
             Translation.HELP_USER,
             parse_mode="Markdown",
             disable_web_page_preview=True,
@@ -113,7 +113,7 @@ async def button(bot, update):
         )
 
     elif "gotohome" in cb_data:
-        await cmd.message.edit(
+        await update.message.edit(
             Translation.START_TEXT.format(cmd.message.chat.first_name, cmd.message.chat.id),
             parse_mode="Markdown",
             disable_web_page_preview=True,
