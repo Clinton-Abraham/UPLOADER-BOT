@@ -24,7 +24,7 @@ async def button(bot, update):
         await ddl_call_back(bot, update)
     elif "aboutbot" in cb_data:
         await update.message.edit(
-            Translation.ABOUT_TEXT,
+            text=Translation.ABOUT_TEXT,
             parse_mode="Markdown",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -42,7 +42,7 @@ async def button(bot, update):
 
     elif "help" in cb_data:
         await update.message.edit(
-            Translation.HELP_USER,
+            text=Translation.HELP_USER,
             parse_mode="Markdown",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
@@ -60,7 +60,7 @@ async def button(bot, update):
 
     elif "gotohome" in cb_data:
         await update.message.edit(
-            Translation.START_TEXT.format(cmd.message.chat.first_name, cmd.message.chat.id),
+            text=Translation.START_TEXT.format(update.from_user.mention),
             parse_mode="Markdown",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
