@@ -19,7 +19,7 @@ else:
 
 # the Strings used for this "thing"
 from translation import Translation
-
+from helper_funcs.forcesub import ForceSub
 from pyrogram import filters
 from database.adduser import AddUser
 from pyrogram import Client as Clinton
@@ -32,6 +32,9 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 async def help_user(bot, update):
     # logger.info(update)
     await AddUser(bot, update)
+    forcesub = await ForceSub(bot, update)
+    if forcesub == 400:
+        return
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.HELP_USER,
@@ -46,6 +49,9 @@ async def help_user(bot, update):
 async def start(bot, update):
     # logger.info(update)
     await AddUser(bot, update)
+    forcesub = await ForceSub(bot, update)
+    if forcesub == 400:
+        return
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.START_TEXT.format(update.from_user.mention),
@@ -62,6 +68,9 @@ async def start(bot, update):
 async def about(bot, update):
     # logger.info(update)
     await AddUser(bot, update)
+    forcesub = await ForceSub(bot, update)
+    if forcesub == 400:
+        return
     await bot.send_message(
         chat_id=update.chat.id,
         text=Translation.ABOUT_TEXT,
