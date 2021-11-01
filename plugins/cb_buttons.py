@@ -25,7 +25,7 @@ async def button(bot, update):
     elif "aboutbot" in cb_data:
         await update.message.edit(
             text=Translation.ABOUT_TEXT,
-            parse_mode="Markdown",
+            parse_mode="html",
             disable_web_page_preview=True,
             reply_markup=InlineKeyboardMarkup(
                 [
