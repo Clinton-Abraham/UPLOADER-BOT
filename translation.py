@@ -26,21 +26,23 @@ class Translation(object):
 """
     ABOUT_TEXT = """<b>🤖 𝐌𝐲 𝐍𝐚𝐦𝐞 : <a href='https://t.me/TeleRoid_Hotstar_Bot'> @𝐓𝐞𝐥𝐞𝐑𝐨𝐢𝐝_𝐇𝐨𝐭𝐬𝐭𝐚𝐫_𝐁𝐨𝐭 </a></b>
 
-<b>👨‍💻 𝐂𝐫𝐞𝐚𝐭𝐨𝐫:<a href='https://t.me/PredatorHackerzZ'> @𝐏𝐫𝐞𝐝𝐚𝐭𝐨𝐫𝐇𝐚𝐜𝐤𝐞𝐫𝐳𝐙 </a></b>
+<b>👨‍💻 𝐃𝐞𝐯𝐞𝐥𝐨𝐩𝐞𝐫:<a href='https://t.me/PredatorHackerzZ'>@𝐏𝐫𝐞𝐝𝐚𝐭𝐨𝐫𝐇𝐚𝐜𝐤𝐞𝐫𝐳𝐙</a></b>
 
 <b>📝 𝐋𝐚𝐧𝐠𝐮𝐚𝐠𝐞: 𝐏𝐲𝐭𝐡𝐨𝐧𝟑</b>
 
-<b>🌐 𝐒𝐞𝐫𝐯𝐞𝐫: <a href='https://www.heroku.com'> 𝐇𝐞𝐫𝐨𝐤𝐮 </a></b>
+<b>📡 𝐒𝐞𝐫𝐯𝐞𝐫: <a href='https://www.heroku.com'> 𝐇𝐞𝐫𝐨𝐤𝐮 </a></b>
 
-<b>📔 𝐋𝐢𝐛𝐫𝐚𝐫𝐲: Pyrogram 1.0.7</b>
+<b>📕 𝐋𝐢𝐛𝐫𝐚𝐫𝐲: Pyrogram 1.0.7</b>
 
-<b>👥 𝐒𝐨𝐮𝐫𝐜𝐞 𝐂𝐨𝐝𝐞:<a href='https://github.com/P-Phreak/URLuploader-With-Hotstar'>𝐂𝐥𝐢𝐜𝐤 𝐇𝐞𝐫𝐞</a></b>
+<b>👥 𝐒𝐨𝐮𝐫𝐜𝐞 𝐂𝐨𝐝𝐞:<a href='https://github.com/PredatorHackerzZ/UPLOADER-BOT'>𝐂𝐥𝐢𝐜𝐤 𝐇𝐞𝐫𝐞</a></b>
 
-<b>📢 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 𝐆𝐫𝐨𝐮𝐩:<a href='https://t.me/TeleRoid14'>@𝐓𝐞𝐥𝐞𝐑𝐨𝐢𝐝𝐒𝐮𝐩𝐩𝐨𝐫𝐭</a></b>
+<b>📢 𝐁𝐨𝐭𝐬 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 :<a href='https://t.me/TeleRoid14'>@𝐓𝐞𝐥𝐞𝐑𝐨𝐢𝐝𝐒𝐮𝐩𝐩𝐨𝐫𝐭</a></b>
 
-<b>🌀 𝐁𝐨𝐭𝐬 𝐔𝐩𝐝𝐚𝐭𝐞𝐬: <a href='https://t.me/TeleRoidGroup'>@𝐓𝐞𝐥𝐞𝐑𝐨𝐢𝐝𝐆𝐫𝐨𝐮𝐩</a></b>
+<b>📢 𝐁𝐨𝐭𝐬 𝐔𝐩𝐝𝐚𝐭𝐞𝐬: <a href='https://t.me/TeleRoidGroup'>@𝐓𝐞𝐥𝐞𝐑𝐨𝐢𝐝𝐆𝐫𝐨𝐮𝐩</a></b>
 
-<b>👨‍🔧 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐁𝐨𝐭𝐥𝐢𝐬𝐭 : <a href='https://t.me/TGRobot_List'>@𝐓𝐆𝐑𝐨𝐛𝐨𝐭_𝐋𝐢𝐬𝐭</a></b>"""
+<b>👨‍🔧 𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦 𝐁𝐨𝐭𝐥𝐢𝐬𝐭 : <a href='https://t.me/TGRobot_List'>@𝐓𝐆𝐑𝐨𝐛𝐨𝐭_𝐋𝐢𝐬𝐭</a></b>
+
+<b>👨‍🔧 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲: <a href='https://t.me/MoviesFlixers_DL'>@𝐏𝐨𝐰𝐞𝐫𝐞𝐝_𝐋𝐢𝐬𝐭</a></b>"""
     FORMAT_SELECTION = "Select the desired format: <a href='{}'>file size might be approximate</a> \nIf you want to set custom thumbnail, send photo before or quickly after tapping on any of the below buttons.\nYou can use /deletethumbnail to delete the auto-generated thumbnail."
     SET_CUSTOM_USERNAME_PASSWORD = """𝐈𝐟 𝐲𝐨𝐮 𝐰𝐚𝐧𝐭 𝐭𝐨 𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐩𝐫𝐞𝐦𝐢𝐮𝐦 𝐯𝐢𝐝𝐞𝐨𝐬, 𝐩𝐫𝐨𝐯𝐢𝐝𝐞 𝐢𝐧 𝐭𝐡𝐞 𝐟𝐨𝐥𝐥𝐨𝐰𝐢𝐧𝐠 𝐟𝐨𝐫𝐦𝐚𝐭:
 URL | filename | username | password"""
