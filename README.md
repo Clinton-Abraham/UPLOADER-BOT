@@ -9,7 +9,7 @@ Telegram RoBot to Upload Links.
 
 👉 Upload HTTP/HTTPS as File/Video to Telegram.
 
-👉 Upload zee5, sony.live, voot and much more 😋
+👉 Upload zee5, sonyliv, voot, MXplayer and much more 😋
 
 👉 Broadcast message, check total users
 
@@ -23,7 +23,7 @@ https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest
 heroku/python
 ```
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/Clinton-Abraham/UPLOADER-BOT)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/PredatorHackerzZ/UPLOADER-BOT)
 
 
 
@@ -31,5 +31,6 @@ heroku/python
 * [@DC4_WARRIOR](https://t.me/Space_X_bots)
 * [@xgorn](https://t.me/xgorn)
 * [Me](https://t.me/TheTeleRoid) for nothing
+
 #### LICENSE
 - GPLv3
