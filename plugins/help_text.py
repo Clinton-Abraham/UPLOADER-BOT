@@ -62,7 +62,8 @@ async def start(bot, update):
                                              [ InlineKeyboardButton(text="⭕ 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 ⭕", url="https://t.me/TeleRoid14"),
                                                InlineKeyboardButton(text="⭕️ 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 ⭕️", url="https://t.me/TeleRoidGroup") ],
                                              [ InlineKeyboardButton(text="♻ 𝐇𝐞𝐥𝐩 ", callback_data="help"),                                                
-                                               InlineKeyboardButton(text="👥 𝐀𝐛𝐨𝐮𝐭", callback_data="aboutbot") ] ] ) )
+                                               InlineKeyboardButton(text="👥 𝐀𝐛𝐨𝐮𝐭", callback_data="aboutbot") ], 
+                                             [ InlineKeyboardButton(text="🔐 𝐂𝐥𝐨𝐬𝐞 🔐", callback_data="home") ] ] ) )
 
 @Clinton.on_message(filters.private & filters.command("about") )
 async def about(bot, update):
