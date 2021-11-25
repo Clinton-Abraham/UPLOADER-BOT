@@ -25,7 +25,7 @@ async def ForceSub(bot: Client, cmd: Message):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🤖 Join Updates Channel", url="https://t.me/(Config.UPDATES_CHANNEL)")
+                        InlineKeyboardButton("🤖 Join Updates Channel", url="https://t.me/Config.UPDATES_CHANNEL")
                     ]
                 ]
             ),
