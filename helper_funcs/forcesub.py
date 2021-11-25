@@ -6,8 +6,6 @@ from pyrogram import Client
 from pyrogram.errors import FloodWait, UserNotParticipant
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, Message
 
-#update_channel = Config.UPDATE_CHANNEL
-
 async def ForceSub(bot: Client, cmd: Message):
     try:
         user = await bot.get_chat_member(chat_id=(int(Config.UPDATES_CHANNEL) if Config.UPDATE_CHANNEL.startswith("-100") else Config.UPDATE_CHANNEL), user_id=cmd.from_user.id)
@@ -26,7 +24,7 @@ async def ForceSub(bot: Client, cmd: Message):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-                        InlineKeyboardButton("🤖 Join Updates Channel", url=f"https://t.me/{update_channel}")
+                        InlineKeyboardButton("🤖 Join Updates Channel", url="https://t.me/TeleRoidGroup")
                     ]
                 ]
             ),
