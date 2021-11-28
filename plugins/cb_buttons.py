@@ -81,3 +81,8 @@ async def button(bot, update):
             )
         )
 
+@Clinton.on_callback_query()
+async def button(bot, update):
+ 
+      if  'close'  in update.data:
+                await update.message.delete()
