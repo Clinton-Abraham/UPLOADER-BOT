@@ -82,8 +82,3 @@ async def about(bot, update):
                                              [ InlineKeyboardButton(text="⭕ Support Group ⭕", url="https://t.me/TeleRoid14"),
                                                InlineKeyboardButton(text="💢 Source Code", url="https://github.com/PredatorHackerzZ") ] ] ) )
 
-@Clinton.on_callback_query()
-async def button(bot, update):
- 
-      if  'close'  in update.data:
-                await update.message.delete()
