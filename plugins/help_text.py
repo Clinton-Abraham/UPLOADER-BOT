@@ -41,7 +41,7 @@ async def help_user(bot, update):
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="⭕️ 𝐉𝐎𝐈𝐍 𝐎𝐔𝐑 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 ⭕️", url="https://t.me/TeleRoidGroup")]]),
+        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="⭕️ Join Updates Channel ⭕️", url="https://t.me/TeleRoidGroup")]]),
    )
 
 
@@ -58,12 +58,12 @@ async def start(bot, update):
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
-        reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="💰 𝐃𝐨𝐧𝐚𝐭𝐞 💰", url="https://PayPal.me/AbhishekKumarIN47") ], 
-                                             [ InlineKeyboardButton(text="⭕ 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 ⭕", url="https://t.me/TeleRoid14"),
-                                               InlineKeyboardButton(text="⭕️ 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 ⭕️", url="https://t.me/TeleRoidGroup") ],
-                                             [ InlineKeyboardButton(text="♻ 𝐇𝐞𝐥𝐩 ", callback_data="help"),                                                
-                                               InlineKeyboardButton(text="👥 𝐀𝐛𝐨𝐮𝐭", callback_data="aboutbot") ], 
-                                             [ InlineKeyboardButton(text="🔐 𝐂𝐥𝐨𝐬𝐞 🔐", callback_data="gotohome") ] ] ) )
+        reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="💰 Donate 💰", url="https://PayPal.me/AbhishekKumarIN47") ], 
+                                             [ InlineKeyboardButton(text="⭕ Support Group ⭕", url="https://t.me/TeleRoid14"),
+                                               InlineKeyboardButton(text="⭕️ Updates Channel ⭕️", url="https://t.me/TeleRoidGroup") ],
+                                             [ InlineKeyboardButton(text="♻ Help ", callback_data="help"),                                                
+                                               InlineKeyboardButton(text="👥 About ", callback_data="aboutbot") ], 
+                                             [ InlineKeyboardButton(text="🔐 Close🔐", callback_data="close") ] ] ) )
 
 @Clinton.on_message(filters.private & filters.command("about") )
 async def about(bot, update):
@@ -78,6 +78,12 @@ async def about(bot, update):
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
-        reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="⭕️ 𝐂𝐇𝐀𝐍𝐍𝐄𝐋 ⭕️", url="https://t.me/TeleRoidGroup") ],
-                                             [ InlineKeyboardButton(text="⭕ 𝐒𝐔𝐏𝐏𝐎𝐑𝐓 ⭕", url="https://t.me/TeleRoid14"),
-                                               InlineKeyboardButton(text="👤 𝐆𝐢𝐭𝐡𝐮𝐛 👤", url="https://github.com/PredatorHackerzZ") ] ] ) )
+        reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="🚸 Powered By", url="https://t.me/TeleRoidGroup") ],
+                                             [ InlineKeyboardButton(text="⭕ Support Group ⭕", url="https://t.me/TeleRoid14"),
+                                               InlineKeyboardButton(text="💢 Source Code", url="https://github.com/PredatorHackerzZ") ] ] ) )
+
+@Clinton.on_callback_query()
+async def button(bot, update):
+ 
+      if  'close'  in update.data:
+                await update.message.delete()
