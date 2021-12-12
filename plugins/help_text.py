@@ -59,8 +59,8 @@ async def start(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
         reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="💰 Donate 💰", url="https://PayPal.me/AbhishekKumarIN47") ], 
-                                             [ InlineKeyboardButton(text="⭕ Support Group ⭕", url="https://t.me/TeleRoid14"),
-                                               InlineKeyboardButton(text="⭕️ Updates Channel ⭕️", url="https://t.me/TeleRoidGroup") ],
+                                             [ InlineKeyboardButton(text="⭕ Support ⭕", url="https://t.me/TeleRoid14"),
+                                               InlineKeyboardButton(text="⭕️ Channel ⭕️", url="https://t.me/TeleRoidGroup") ],
                                              [ InlineKeyboardButton(text="♻ Help ", callback_data="help"),                                                
                                                InlineKeyboardButton(text="👥 About ", callback_data="aboutbot") ], 
                                              [ InlineKeyboardButton(text="🔐 Close🔐", callback_data="close") ] ] ) )
@@ -79,6 +79,6 @@ async def about(bot, update):
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
         reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="🚸 Powered By", url="https://t.me/TeleRoidGroup") ],
-                                             [ InlineKeyboardButton(text="⭕ Support Group ⭕", url="https://t.me/TeleRoid14"),
+                                             [ InlineKeyboardButton(text="🌀 BotsList", url="https://t.me/joinchat/t1ko_FOJxhFiOThl"),
                                                InlineKeyboardButton(text="💢 Source Code", url="https://github.com/PredatorHackerzZ") ] ] ) )
 
