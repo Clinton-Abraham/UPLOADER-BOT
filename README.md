@@ -25,6 +25,13 @@ heroku/python
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://www.heroku.com/deploy?template=https://github.com/Clinton-Abraham/UPLOADER-BOT)
 
+## BOT COMMANDS
+
+* start - 👻 Check I'm alive or dead
+* help - 📝 How to use this robot 
+* viewthumbnail - 🌌 Current Thumbnail
+* delthumbnail - 🎇 Delete thumbnail
+
 
 
 ## Credits, and Thanks to
