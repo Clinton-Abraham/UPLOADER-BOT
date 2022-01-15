@@ -11,9 +11,9 @@ Telegram RoBot to Upload Links.
 
 👉 Upload zee5, sony.live, voot and much more 😋
 
-👉 Broadcast message, check total users
-
 👉  Permanent thumbnail Support
+
+👉 Broadcast message
 
 **Heroku Buildpacks**
 ```
