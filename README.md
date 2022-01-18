@@ -28,7 +28,9 @@ heroku/python
 ## BOT COMMANDS
 
 * start - 👻 Check I'm alive or dead
-* help - 📝 How to use this robot 
+* help - 📝 How to use this robot
+* broadcast - 💌 Send message to users
+* total - 👨‍👨‍👦‍👦 To get total users count
 * viewthumbnail - 🌌 Current Thumbnail
 * delthumbnail - 🎇 Delete thumbnail
 
