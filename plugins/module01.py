@@ -12,7 +12,7 @@ async def inlineX1(bot, update):
               description=f"Can't find torrents for {query} in ThePirateBay !!",
               input_message_content=InputTextMessageContent(
               message_text=f"No Torrents Found For `{query}` in ThePirateBay !!", parse_mode="Markdown"),
-              reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!pb ") ] ] ) ) )
+              reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!1 ") ] ] ) ) )
           else:
               for i in range(len(torrentList)):
                   dl_links = "- " + "\n\n- ".join(torrentList[i]['Downloads'] )
@@ -28,7 +28,7 @@ async def inlineX1(bot, update):
                                f"**Released on {torrentList[i]['ReleaseDate']}**\n\n"
                                f"**Torrent Download Links:**\n{dl_links}",
                                parse_mode="Markdown", disable_web_page_preview=True),
-                  reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!yts ") ] ] ),
+                  reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!1 ") ] ] ),
                   thumb_url=torrentList[i]["Poster"] ) )
           try:
               await update.answer(results=answers, cache_time=0)
@@ -54,7 +54,7 @@ async def inlineX2(bot, update):
               description=f"Can't find YTS torrents for {query} !!",
               input_message_content=InputTextMessageContent(
               message_text=f"No YTS Torrents Found For `{query}`", parse_mode="Markdown"),
-              reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!yts ") ] ] ) ) )
+              reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!2 ") ] ] ) ) )
           else:
               for i in range(len(torrentList)):
                   answers.append(InlineQueryResultArticle(title=f"{torrentList[i]['Name']}",
@@ -68,7 +68,7 @@ async def inlineX2(bot, update):
                                f"**Uploader:** `{torrentList[i]['Uploader']}`\n"
                                f"**Uploaded on {torrentList[i]['Date']}**\n\n"
                                f"**Magnet:**\n`{torrentList[i]['Magnet']}`", parse_mode="Markdown"),
-                      reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!pb ") ] ] ) ) )
+                      reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!2 ") ] ] ) ) )
 
           try:
               await update.answer(results=answers, cache_time=0)
@@ -92,21 +92,25 @@ async def inlineX3(bot, update):
               answers.append(InlineQueryResultArticle(title="No Anime Torrents Found!",
               description=f"Can't find Anime torrents for {query} !!",
               input_message_content=InputTextMessageContent(message_text=f"No Anime Torrents Found For `{query}`", parse_mode="Markdown"),
-              reply_markup=InlineKeyboardMarkup( [ [InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!a ") ] ] ) ) )
+              reply_markup=InlineKeyboardMarkup( [ [InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!3 ") ] ] ) ) )
           else:
               for i in range(len(torrentList)):
                   answers.append(InlineQueryResultArticle(title=f"{torrentList[i]['Name']}",
-                  description=f"Seeders: {torrentList[i]['Seeder']}, Leechers: {torrentList[i]['Leecher']}\nSize: {torrentList[i]['Size']}",
-                  input_message_content=InputTextMessageContent(
-                  message_text=f"**Category:** `{torrentList[i]['Category']}`\n"
-                               f"**Name:** `{torrentList[i]['Name']}`\n"
-                               f"**Seeders:** `{torrentList[i]['Seeder']}`\n"
-                               f"**Leechers:** `{torrentList[i]['Leecher']}`\n"
-                               f"**Size:** `{torrentList[i]['Size']}`\n"
-                               f"**Upload Date:** `{torrentList[i]['Date']}`\n\n"
-                               f"**Magnet:** \n`{torrentList[i]['Magnet']}`", parse_mode="Markdown"),
-                  reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!a ") ] ] ) ) )
-
+                  description=f"Seeders: {torrentList[i]['Seeders']}, Leechers: {torrentList[i]['Leechers']}\nSize: {torrentList[i]['Size']}, 
+                  Downloads: {torrentList[i]['Downloads']}",
+                  input_message_content=InputTextMessageContent(message_text=f"**Category:** `{torrentList[i]['Category']}`\n"
+                  f"**Name:** `{torrentList[i]['Name']}`\n"
+                  f"**Language:** `{torrentList[i]['Language']}`\n"
+                  f"**Seeders:** `{torrentList[i]['Seeders']}`\n"
+                  f"**Leechers:** `{torrentList[i]['Leechers']}`\n"
+                  f"**Size:** `{torrentList[i]['Size']}`\n"
+                  f"**Downloads:** `{torrentList[i]['Downloads']}`\n"
+                  f"__Uploaded by {torrentList[i]['UploadedBy']}__\n"
+                  f"__Uploaded {torrentList[i]['DateUploaded']}__\n"
+                  f"__Last Checked {torrentList[i]['LastChecked']}__\n\n"
+                  f"**Magnet:**\n`{torrentList[i]['Magnet']}`,
+                  parse_mode="Markdown"), thumb_url=torrentList[i]['Poster'],
+                  reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!3 ") ] ] ) ) )
           try:
               await update.answer(results=answers, cache_time=0)
           except QueryIdInvalid:
@@ -129,7 +133,7 @@ async def inlineX4(bot, update):
               answers.append(InlineQueryResultArticle(title="No Anime Torrents Found!",
               description=f"Can't find Anime torrents for {query} !!",
               input_message_content=InputTextMessageContent(message_text=f"No Anime Torrents Found For `{query}`", parse_mode="Markdown"),
-              reply_markup=InlineKeyboardMarkup( [ [InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!a ") ] ] ) ) )
+              reply_markup=InlineKeyboardMarkup( [ [InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!4 ") ] ] ) ) )
           else:
               for i in range(len(torrentList)):
                   answers.append(InlineQueryResultArticle(title=f"{torrentList[i]['Name']}",
@@ -142,7 +146,7 @@ async def inlineX4(bot, update):
                                f"**Size:** `{torrentList[i]['Size']}`\n"
                                f"**Upload Date:** `{torrentList[i]['Date']}`\n\n"
                                f"**Magnet:** \n`{torrentList[i]['Magnet']}`", parse_mode="Markdown"),
-                  reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!a ") ] ] ) ) )
+                  reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!4 ") ] ] ) ) )
 
           try:
               await update.answer(results=answers, cache_time=0)
