@@ -15,19 +15,21 @@ async def inlineX1(bot, update):
               reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!pb ") ] ] ) ) )
           else:
               for i in range(len(torrentList)):
+                  dl_links = "- " + "\n\n- ".join(torrentList[i]['Downloads'] )
                   answers.append(InlineQueryResultArticle(title=f"{torrentList[i]['Name']}",
-                  description=f"Seeders: {torrentList[i]['Seeders']}, Leechers: {torrentList[i]['Leechers']}\nSize: {torrentList[i]['Size']}",
+                  description=f"Language: {torrentList[i]['Language']}\nLikes: {torrentList[i]['Likes']}, Rating: {torrentList[i]['Rating']}",
                   input_message_content=InputTextMessageContent(
-                  message_text=f"**Category:** `{torrentList[i]['Category']}`\n"
-                               f"**Name:** `{torrentList[i]['Seeders']}`\n"
-                               f"**Size:** `{torrentList[i]['Size']}`\n"
-                               f"**Seeders:** `{torrentList[i]['Seeders']}`\n"
-                               f"**Leechers:** `{torrentList[i]['Leechers']}`\n"
-                               f"**Uploader:** `{torrentList[i]['Uploader']}`\n"
-                               f"**Uploaded on {torrentList[i]['Date']}**\n\n"
-                               f"**Magnet:**\n`{torrentList[i]['Magnet']}`", parse_mode="Markdown"),
-                      reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!pb ") ] ] ) ) )
-
+                  message_text=f"**Genre:** `{torrentList[i]['Genre']}`\n"
+                               f"**Name:** `{torrentList[i]['Name']}`\n"
+                               f"**Language:** `{torrentList[i]['Language']}`\n"
+                               f"**Likes:** `{torrentList[i]['Likes']}`\n"
+                               f"**Rating:** `{torrentList[i]['Rating']}`\n"
+                               f"**Duration:** `{torrentList[i]['Runtime']}`\n"
+                               f"**Released on {torrentList[i]['ReleaseDate']}**\n\n"
+                               f"**Torrent Download Links:**\n{dl_links}",
+                               parse_mode="Markdown", disable_web_page_preview=True),
+                  reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!yts ") ] ] ),
+                  thumb_url=torrentList[i]["Poster"] ) )
           try:
               await update.answer(results=answers, cache_time=0)
           except QueryIdInvalid:
@@ -55,21 +57,18 @@ async def inlineX2(bot, update):
               reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!yts ") ] ] ) ) )
           else:
               for i in range(len(torrentList)):
-                  dl_links = "- " + "\n\n- ".join(torrentList[i]['Downloads'] )
                   answers.append(InlineQueryResultArticle(title=f"{torrentList[i]['Name']}",
-                  description=f"Language: {torrentList[i]['Language']}\nLikes: {torrentList[i]['Likes']}, Rating: {torrentList[i]['Rating']}",
+                  description=f"Seeders: {torrentList[i]['Seeders']}, Leechers: {torrentList[i]['Leechers']}\nSize: {torrentList[i]['Size']}",
                   input_message_content=InputTextMessageContent(
-                  message_text=f"**Genre:** `{torrentList[i]['Genre']}`\n"
-                               f"**Name:** `{torrentList[i]['Name']}`\n"
-                               f"**Language:** `{torrentList[i]['Language']}`\n"
-                               f"**Likes:** `{torrentList[i]['Likes']}`\n"
-                               f"**Rating:** `{torrentList[i]['Rating']}`\n"
-                               f"**Duration:** `{torrentList[i]['Runtime']}`\n"
-                               f"**Released on {torrentList[i]['ReleaseDate']}**\n\n"
-                               f"**Torrent Download Links:**\n{dl_links}",
-                               parse_mode="Markdown", disable_web_page_preview=True),
-                  reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!yts ") ] ] ),
-                  thumb_url=torrentList[i]["Poster"] ) )
+                  message_text=f"**Category:** `{torrentList[i]['Category']}`\n"
+                               f"**Name:** `{torrentList[i]['Seeders']}`\n"
+                               f"**Size:** `{torrentList[i]['Size']}`\n"
+                               f"**Seeders:** `{torrentList[i]['Seeders']}`\n"
+                               f"**Leechers:** `{torrentList[i]['Leechers']}`\n"
+                               f"**Uploader:** `{torrentList[i]['Uploader']}`\n"
+                               f"**Uploaded on {torrentList[i]['Date']}**\n\n"
+                               f"**Magnet:**\n`{torrentList[i]['Magnet']}`", parse_mode="Markdown"),
+                      reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!pb ") ] ] ) ) )
 
           try:
               await update.answer(results=answers, cache_time=0)
