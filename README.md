@@ -1,9 +1,11 @@
-## Uploader X  Bot
+## [@UPLOADER_X_BOT](https://t.me/uploader_x_bot)
 ---
 
 Telegram RoBot to Upload Links.
 
 **Features**:
+
+🛠️ Torrent search build in progress 😴
 
 👉 Upload [yt-dlp Supported Links](https://ytdl-org.github.io/youtube-dl/supportedsites.html) to Telegram.
 
