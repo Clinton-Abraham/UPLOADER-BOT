@@ -1,6 +1,22 @@
 
 """
 
+@Clinton.on_inline_query()
+async def inline(bot, query):
+
+          searche = query.query
+          if searche.startswith("1"):
+                await inlineX1(bot, query)
+          elif searche.startswith("2"):
+                await inlineX2(bot, query)
+          elif searche.startswith("3"):
+                await inlineX3(bot, query)
+          elif searche.startswith("4"):
+                await inlineX4(bot, query)
+          else:
+               await results00(bot, query)
+
+
 async def inlineX1(bot, update):
 
           answers = []
