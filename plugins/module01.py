@@ -1,26 +1,32 @@
 
-"""
+from functions.function00 import *
+from pyrogram import Client as Clinton
+from pyrogram.errors import QueryIdInvalid
+from pyrogram.types import InlineKeyboardButton
+from pyrogram.types import InlineKeyboardMarkup
+from pyrogram.types import InputTextMessageContent
+from pyrogram.types import InlineQueryResultArticle
 
 @Clinton.on_inline_query()
 async def inline(bot, query):
 
           searche = query.query
           if searche.startswith("1"):
-                await inlineX1(bot, query)
+                await inlineX1(bot, query, searche)
           elif searche.startswith("2"):
-                await inlineX2(bot, query)
+                await inlineX2(bot, query, searche)
           elif searche.startswith("3"):
-                await inlineX3(bot, query)
+                await inlineX3(bot, query, searche)
           elif searche.startswith("4"):
-                await inlineX4(bot, query)
+                await inlineX4(bot, query, searche)
           else:
                await results00(bot, query)
 
 
-async def inlineX1(bot, update):
+async def inlineX1(bot, update, searche):
 
           answers = []
-          search_ts = update.query
+          search_ts = searche
           query = search_ts.split(" ", 1)[-1]
           torrentList = await SearchYTS(query)
           if not torrentList:
@@ -58,11 +64,11 @@ async def inlineX1(bot, update):
               pass
 
 
-async def inlineX2(bot, update):
+async def inlineX2(bot, update, searche):
 
 
           answers = []
-          search_ts = update.query
+          search_ts = searche
           query = search_ts.split(" ", 1)[-1]
           torrentList = await SearchAnime(query)
           if not torrentList:
@@ -98,10 +104,10 @@ async def inlineX2(bot, update):
               pass
 
 
-async def inlineX3(bot, update):
+async def inlineX3(bot, update, searche):
 
           answers = []
-          search_ts = update.query
+          search_ts = searche
           query = search_ts.split(" ", 1)[-1]
           torrentList = await Search1337x(query)
           if not torrentList:
@@ -139,10 +145,10 @@ async def inlineX3(bot, update):
               pass
 
 
-async def inlineX4(bot, update):
+async def inlineX4(bot, update, searche):
 
           answers = []
-          search_ts = update.query
+          search_ts = searche
           query = search_ts.split(" ", 1)[-1]
           torrentList = await SearchPirateBay(query)
           if not torrentList:
@@ -176,4 +182,4 @@ async def inlineX4(bot, update):
               pass
 
 
-"""
+#async def result00(bot, update):
