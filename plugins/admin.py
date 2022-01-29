@@ -18,5 +18,5 @@ async def sts(c, m):
 @Clinton.on_message(filters.private & filters.command("search"))
 async def serc(bot, update):
 
-      await bot.send_messgae(chat_id=update.chat.id, text="🔍 TORRENT SEARCH", 
+      await bot.send_message(chat_id=update.chat.id, text="🔍 TORRENT SEARCH", 
       parse_mode="html", reply_markup=Button.BUTTONS01)
