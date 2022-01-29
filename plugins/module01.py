@@ -182,4 +182,5 @@ async def inlineX4(bot, update, searche):
               pass
 
 
-#async def result00(bot, update):
+async def result00(bot, update):
+          print("👀")
