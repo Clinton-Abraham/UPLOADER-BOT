@@ -1,16 +1,10 @@
 
 # (c) @AbirHasan2005 | Modifieded By : @DC4_WARRIOR
 
-import traceback
-import os
 
 from pyrogram import Client as Clinton
 from pyrogram import filters
-
-if bool(os.environ.get("WEBHOOK", False)):
-    from sample_config import Config
-else:
-    from config import Config
+from config import Config
 from database.access import clinton
 
 @Clinton.on_message(filters.private & filters.command('total'))
