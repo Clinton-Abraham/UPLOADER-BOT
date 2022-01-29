@@ -118,8 +118,7 @@ async def inlineX3(bot, update, searche):
           else:
               for i in range(len(torrentList)):
                   answers.append(InlineQueryResultArticle(title=f"{torrentList[i]['Name']}",
-                  description=f"Seeders: {torrentList[i]['Seeders']}, Leechers: {torrentList[i]['Leechers']}\nSize: {torrentList[i]['Size']}, 
-                  Downloads: {torrentList[i]['Downloads']}",
+                  description=f"Seeders: {torrentList[i]['Seeders']}, Leechers: {torrentList[i]['Leechers']}\nSize: {torrentList[i]['Size']}, Downloads: {torrentList[i]['Downloads']}",
                   input_message_content=InputTextMessageContent(message_text=f"**Category:** `{torrentList[i]['Category']}`\n"
                   f"**Name:** `{torrentList[i]['Name']}`\n"
                   f"**Language:** `{torrentList[i]['Language']}`\n"
@@ -130,7 +129,7 @@ async def inlineX3(bot, update, searche):
                   f"__Uploaded by {torrentList[i]['UploadedBy']}__\n"
                   f"__Uploaded {torrentList[i]['DateUploaded']}__\n"
                   f"__Last Checked {torrentList[i]['LastChecked']}__\n\n"
-                  f"**Magnet:**\n`{torrentList[i]['Magnet']}`,
+                  f"**Magnet:**\n`{torrentList[i]['Magnet']}`",
                   parse_mode="Markdown"), thumb_url=torrentList[i]['Poster'],
                   reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!3 ") ] ] ) ) )
           try:
