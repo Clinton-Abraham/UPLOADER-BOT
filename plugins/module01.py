@@ -11,13 +11,13 @@ from pyrogram.types import InlineQueryResultArticle
 async def inline(bot, query):
 
           searche = query.query
-          if searche.startswith("1"):
+          if searche.startswith("!1"):
                 await inlineX1(bot, query, searche)
-          elif searche.startswith("2"):
+          elif searche.startswith("!2"):
                 await inlineX2(bot, query, searche)
-          elif searche.startswith("3"):
+          elif searche.startswith("!3"):
                 await inlineX3(bot, query, searche)
-          elif searche.startswith("4"):
+          elif searche.startswith("!4"):
                 await inlineX4(bot, query, searche)
           else:
                await results0(bot, query)
