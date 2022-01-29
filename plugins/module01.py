@@ -20,7 +20,7 @@ async def inline(bot, query):
           elif searche.startswith("4"):
                 await inlineX4(bot, query, searche)
           else:
-               await results00(bot, query)
+               await results0(bot, query)
 
 
 async def inlineX1(bot, update, searche):
@@ -181,5 +181,5 @@ async def inlineX4(bot, update, searche):
               pass
 
 
-async def result00(bot, update):
+async def results0(bot, update):
           print("👀")
