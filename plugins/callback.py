@@ -7,6 +7,11 @@ from pyrogram import Client as Clinton
 from plugins.youtube_dl_button import youtube_dl_call_back
 from plugins.dl_button import ddl_call_back
 
+@Clinton.on_callback_query(filters.regex('^X0$'))
+async def delt(bot, update):
+          await update.message.delete(True)
+
+
 @Clinton.on_callback_query()
 async def button(bot, update):
 
