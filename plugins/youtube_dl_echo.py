@@ -4,17 +4,12 @@
 
 # the logging things
 import logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
 import requests, urllib.parse, filetype, os, time, shutil, tldextract, asyncio, json, math
-from PIL import Image
-# the secret configuration specific things
-if bool(os.environ.get("WEBHOOK", False)):
-    from sample_config import Config
-else:
-    from config import Config
-# the Strings used for this "thing"
+
+from config import Config
 from database.adduser import AddUser
 from translation import Translation
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
@@ -29,8 +24,9 @@ from hachoir.parser import createParser
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 from pyrogram.errors import UserNotParticipant
 
-@Clinton.on_message(filters.private & filters.regex(pattern=".*http.*"))
+@Clinton.on_message(filters.private & ~filters.via_bot & filters.regex(pattern=".*http.*"))
 async def echo(bot, update):
+    await AddUser(bot, update)
     imog = await update.reply_text("Processing...⚡", reply_to_message_id=update.message_id)
     youtube_dl_username = None
     youtube_dl_password = None
@@ -213,11 +209,11 @@ async def echo(bot, update):
                 "video", format_id, format_ext)
             inline_keyboard.append([
                 InlineKeyboardButton(
-                    "🎞 SVideo",
+                    "SVideo",
                     callback_data=(cb_string_video).encode("UTF-8")
                 ),
                 InlineKeyboardButton(
-                    "📁 DFile",
+                    "DFile",
                     callback_data=(cb_string_file).encode("UTF-8")
                 )
             ])
@@ -227,11 +223,11 @@ async def echo(bot, update):
                 "video", format_id, format_ext)
             inline_keyboard.append([
                 InlineKeyboardButton(
-                    "🎞 Video",
+                    "video",
                     callback_data=(cb_string_video).encode("UTF-8")
                 ),
                 InlineKeyboardButton(
-                    "📁 File",
+                    "file",
                     callback_data=(cb_string_file).encode("UTF-8")
                 )
             ])
@@ -253,11 +249,11 @@ async def echo(bot, update):
             "video", "OFL", "ENON")
         inline_keyboard.append([
             InlineKeyboardButton(
-                "🎞 SVideo",
+                "SVideo",
                 callback_data=(cb_string_video).encode("UTF-8")
             ),
             InlineKeyboardButton(
-                "📁 DFile",
+                "DFile",
                 callback_data=(cb_string_file).encode("UTF-8")
             )
         ])
