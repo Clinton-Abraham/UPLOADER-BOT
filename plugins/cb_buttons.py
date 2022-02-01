@@ -30,11 +30,12 @@ async def button(bot, update):
             reply_markup=InlineKeyboardMarkup(
                 [
 					[
-						InlineKeyboardButton("👥 𝐇𝐞𝐥𝐩", callback_data="help"),
-						InlineKeyboardButton("🌐 𝐒𝐨𝐮𝐫𝐜𝐞 𝐂𝐨𝐝𝐞", url="https://t.me/MoviesFlixers_DL")
+						InlineKeyboardButton("🆘 Help", callback_data="help"),
+						InlineKeyboardButton("🐱 SourceCode", url="https://github.com/PredatorHackerzZ/UPLOADER-BOT")
 					],
 					[
-						InlineKeyboardButton("🏠 𝐇𝐨𝐦𝐞", callback_data="gotohome") 
+						InlineKeyboardButton("🏡 Home", callback_data="gotohome"),
+						InlineKeyboardButton("🔐 Close", callback_data="close")
 					]
 	        ]
             )
@@ -48,11 +49,12 @@ async def button(bot, update):
             reply_markup=InlineKeyboardMarkup(
                 [
                                         [
-						InlineKeyboardButton("𝐒𝐨𝐮𝐫𝐜𝐞 𝐂𝐨𝐝𝐞𝐬 𝐨𝐟 𝐁𝐨𝐭 ", url="https://t.me/Moviesflixers_DL")
+						InlineKeyboardButton("👥 About ", callback_data="aboutbot"),
+						InlineKeyboardButton("🐱 SourceCode", url="https://github.com/PredatorHackerzZ/UPLOADER-BOT")
 					],
 					[
-						InlineKeyboardButton("👥 𝐀𝐛𝐨𝐮𝐭 ", callback_data="aboutbot"),
-						InlineKeyboardButton("🏠 𝐇𝐨𝐦𝐞", callback_data="gotohome")
+						InlineKeyboardButton("🏡 Home", callback_data="gotohome"),
+						InlineKeyboardButton("🔐 Close ", callback_data="close")
 					]
                 ]
             )
@@ -66,16 +68,19 @@ async def button(bot, update):
             reply_markup=InlineKeyboardMarkup(
                 [
                     [
-						InlineKeyboardButton("🛑 𝐒𝐮𝐩𝐩𝐨𝐫𝐭 🛑", url="https://t.me/TeleRoid14"),
-						InlineKeyboardButton("⭕ 𝐂𝐡𝐚𝐧𝐧𝐞𝐥 ⭕", url="https://t.me/TeleRoidGroup")
+						InlineKeyboardButton("⭕ Channel ⭕", url="https://t.me/TeleRoidGroup"),
+						InlineKeyboardButton("😇 Support", url="https://t.me/TeleRoid14")
 					],
 					[
-						InlineKeyboardButton("👥 𝐀𝐛𝐨𝐮𝐭 ", callback_data="aboutbot"),
-						InlineKeyboardButton("🗣️ 𝐇𝐞𝐥𝐩 ", callback_data="help")
-					], 
+						InlineKeyboardButton("👥 About", callback_data="aboutbot"),
+						InlineKeyboardButton("🆘 Help", callback_data="help")
+					],
                                         [
-						InlineKeyboardButton("🌐 𝐆𝐢𝐭𝐡𝐮𝐛 ", url="https://GitHub.com/PredatorHackerzZ"),
-						InlineKeyboardButton("📢 𝐏𝐨𝐰𝐞𝐫𝐞𝐝 𝐁𝐲", url="https://t.me/MoviesFlixers_DL")
+						InlineKeyboardButton("😺 GitHub", url="https://GitHub.com/PredatorHackerzZ"),
+						InlineKeyboardButton("💸 Donate", url="https://paypal.me/AbhishekKumarIN47")
+	                                ],
+                                        [
+						InlineKeyboardButton("🔐 Close", callback_data="close")
 	            ]
                 ]
             )
