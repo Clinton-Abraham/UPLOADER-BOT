@@ -77,7 +77,7 @@ async def button(bot, update):
 					],
                                         [
 						InlineKeyboardButton("😺 GitHub", url="https://GitHub.com/PredatorHackerzZ"),
-						InlineKeyboardButton("💸 Donate", url="https://paypal.me/AbhishekKumarIN47")
+						InlineKeyboardButton("💸 Donate", url="https://www.paypal.me/AbhishekKumarIN47")
 	                                ],
                                         [
 						InlineKeyboardButton("🔐 Close", callback_data="close")
