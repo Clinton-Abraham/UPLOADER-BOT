@@ -11,13 +11,13 @@ from pyrogram.types import InlineQueryResultArticle
 async def inline(bot, query):
 
           searche = query.query
-          if searche.startswith("!1"):
+          if searche.startswith("1"):
                 await inlineX1(bot, query, searche)
-          elif searche.startswith("!2"):
+          elif searche.startswith("2"):
                 await inlineX2(bot, query, searche)
-          elif searche.startswith("!3"):
+          elif searche.startswith("3"):
                 await inlineX3(bot, query, searche)
-          elif searche.startswith("!4"):
+          elif searche.startswith("4"):
                 await inlineX4(bot, query, searche)
           else:
                await results0(bot, query)
@@ -34,7 +34,7 @@ async def inlineX1(bot, update, searche):
               description=f"Can't find torrents for {query} in ThePirateBay !!",
               input_message_content=InputTextMessageContent(
               message_text=f"No Torrents Found For `{query}` in ThePirateBay !!", parse_mode="Markdown"),
-              reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!1 ") ] ] ) ) )
+              reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Try Again", switch_inline_query_current_chat="1 ") ] ] ) ) )
           else:
               for i in range(len(torrentList)):
                   dl_links = "- " + "\n\n- ".join(torrentList[i]['Downloads'] )
@@ -50,7 +50,7 @@ async def inlineX1(bot, update, searche):
                                f"**Released on {torrentList[i]['ReleaseDate']}**\n\n"
                                f"**Torrent Download Links:**\n{dl_links}",
                                parse_mode="Markdown", disable_web_page_preview=True),
-                  reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!1 ") ] ] ),
+                  reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Search Again", switch_inline_query_current_chat="1 ") ] ] ),
                   thumb_url=torrentList[i]["Poster"] ) )
           try:
               await update.answer(results=answers, cache_time=0)
@@ -76,7 +76,7 @@ async def inlineX2(bot, update, searche):
               description=f"Can't find YTS torrents for {query} !!",
               input_message_content=InputTextMessageContent(
               message_text=f"No YTS Torrents Found For `{query}`", parse_mode="Markdown"),
-              reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!2 ") ] ] ) ) )
+              reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton("Try Again", switch_inline_query_current_chat="2 ") ] ] ) ) )
           else:
               for i in range(len(torrentList)):
                    answers.append(
@@ -94,7 +94,7 @@ async def inlineX2(bot, update, searche):
                                 parse_mode="Markdown"
                             ),
                             reply_markup=InlineKeyboardMarkup(
-                                [[InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!a ")]]
+                                [[InlineKeyboardButton("Search Again", switch_inline_query_current_chat="2 ")]]
                             )
                         )
                     )
@@ -121,7 +121,7 @@ async def inlineX3(bot, update, searche):
               answers.append(InlineQueryResultArticle(title="No Anime Torrents Found!",
               description=f"Can't find Anime torrents for {query} !!",
               input_message_content=InputTextMessageContent(message_text=f"No Anime Torrents Found For `{query}`", parse_mode="Markdown"),
-              reply_markup=InlineKeyboardMarkup( [ [InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!3 ") ] ] ) ) )
+              reply_markup=InlineKeyboardMarkup( [ [InlineKeyboardButton("Try Again", switch_inline_query_current_chat="3 ") ] ] ) ) )
           else:
               for i in range(len(torrentList)):
                   answers.append(
@@ -143,7 +143,7 @@ async def inlineX3(bot, update, searche):
                             parse_mode="Markdown"
                         ),
                         reply_markup=InlineKeyboardMarkup(
-                            [[InlineKeyboardButton("Search Again", switch_inline_query_current_chat="")]]
+                            [[InlineKeyboardButton("Search Again", switch_inline_query_current_chat="3 ")]]
                         ),
                         thumb_url=torrentList[i]['Poster']
                     )
@@ -170,7 +170,7 @@ async def inlineX4(bot, update, searche):
               answers.append(InlineQueryResultArticle(title="No Anime Torrents Found!",
               description=f"Can't find Anime torrents for {query} !!",
               input_message_content=InputTextMessageContent(message_text=f"No Anime Torrents Found For `{query}`", parse_mode="Markdown"),
-              reply_markup=InlineKeyboardMarkup( [ [InlineKeyboardButton("Try Again", switch_inline_query_current_chat="!4 ") ] ] ) ) )
+              reply_markup=InlineKeyboardMarkup( [ [InlineKeyboardButton("Try Again", switch_inline_query_current_chat="4 ") ] ] ) ) )
           else:
               for i in range(len(torrentList)):
                     answers.append(
@@ -189,7 +189,7 @@ async def inlineX4(bot, update, searche):
                                 parse_mode="Markdown"
                             ),
                             reply_markup=InlineKeyboardMarkup(
-                                [[InlineKeyboardButton("Search Again", switch_inline_query_current_chat="!4 ")]])
+                                [[InlineKeyboardButton("Search Again", switch_inline_query_current_chat="4 ")]])
                         )
                     )
           try:
