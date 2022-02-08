@@ -1,6 +1,6 @@
 class Translation(object):
     START_TEXT = """Hi {},
-I'm URL X Uploader!
+I'm URL Uploader Bot!
 You can upload HTTP/HTTPS direct link, Using this bot!
 
 /help for more details!"""
@@ -10,8 +10,8 @@ URL | filename | username | password"""
     DOWNLOAD_START = "📥Downloading..."
     UPLOAD_START = "📤Uploading..."
     RCHD_TG_API_LIMIT = "Downloaded in {} seconds.\nDetected File Size: {}\nSorry. But, I cannot upload files greater than 2GB due to Telegram API limitations."
-    AFTER_SUCCESSFUL_UPLOAD_MSG = "Thanks for using @Uploader_X_bot\n\n<b>Join : @Space_X_Bots</b>"
-    AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "Downloaded in {} seconds.\nUploaded in {} seconds.\n\n@Uploader_X_Bot"
+    AFTER_SUCCESSFUL_UPLOAD_MSG = "Thanks for using @UploaderrXRobot\n\n<b>Join : @TamilanXbots</b>"
+    AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS = "Downloaded in {} seconds.\nUploaded in {} seconds.\n\n@UploaderrXRobot"
     SAVED_CUSTOM_THUMB_NAIL = "Custom video / file thumbnail saved. This image will be used in the video / file."
     DEL_ETED_CUSTOM_THUMB_NAIL = "✅ Custom thumbnail cleared succesfully."
     CUSTOM_CAPTION_UL_FILE = "{}"
@@ -26,7 +26,7 @@ URL | filename | username | password"""
    Video  - Give File as video without Screenshots
    File   - Give File without Screenshots
 
-If bot didn't respond, contact @Sources_Codes"""
+If bot didn't respond, contact @TamilanXbots"""
     REPLY_TO_MEDIA_ALBUM_TO_GEN_THUMB = "Reply /generatecustomthumbnail to a media album, to generate custom thumbail"
     ERR_ONLY_TWO_MEDIA_IN_ALBUM = """Media Album should contain only two photos. Please re-send the media album, and then try again, or send only two photos in an album."
 You can use /rename command after receiving file to rename it with custom thumbnail support.
