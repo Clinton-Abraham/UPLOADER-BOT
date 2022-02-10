@@ -5,17 +5,17 @@ Telegram RoBot to Upload Links.
 
 **Features**:
 
-🛠️ Torrent search build in progress 😴
-
 👉 Upload [yt-dlp Supported Links](https://ytdl-org.github.io/youtube-dl/supportedsites.html) to Telegram.
 
 👉 Upload HTTP/HTTPS as File/Video to Telegram.
 
-👉 Upload zee5, sony.live, voot and much more 😋
+👉 Upload zee5, sony.live, voot and much more.
 
-👉  Permanent thumbnail Support
+👉 Inline torrent search support.
 
-👉 Broadcast message
+👉  Permanent thumbnail Support.
+
+👉 Broadcast message.
 
 **Heroku Buildpacks**
 ```
@@ -36,7 +36,6 @@ heroku/python
 * total - 👨‍👨‍👦‍👦 To get total users count
 * viewthumbnail - 🌌 Current Thumbnail
 * delthumbnail - 🎇 Delete thumbnail
-
 
 
 ## Credits, and Thanks to
