@@ -20,7 +20,6 @@ from config import Config
 # the Strings used for this "thing"
 from translation import Translation
 from plugins.custom_thumbnail import *
-from asyncio import TimeOutError
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes, TimeFormatter
 from hachoir.metadata import extractMetadata
@@ -92,7 +91,7 @@ async def ddl_call_back(bot, update):
                 update.message.message_id,
                 c_time
             )
-        except TimeOutError:
+        except asyncio.TimeOutError:
             await bot.edit_message_text(
                 text=Translation.SLOW_URL_DECED,
                 chat_id=update.message.chat.id,
