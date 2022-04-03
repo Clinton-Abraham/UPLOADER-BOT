@@ -14,9 +14,7 @@ import os
 from PIL import Image
 import time
 
-    from sample_config import Config
-else:
-    from config import Config
+from sample_config import Config
 # the Strings used for this "thing"
 from translation import Translation
 from pyrogram import Client as Clinton
