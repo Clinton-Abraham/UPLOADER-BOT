@@ -1,64 +1,37 @@
 {
   "name": "Uploader X Bot",
   "description": "Telegram Bot to Upload URLs to Telegram as File and Video.",
-  "keywords": [
-    "telegram",
-    "best",
-    "youtube",
-    "downloader",
-    "open",
-    "source",
-    "multi",
-    "purpose",
-    "ffmpeg",
-    "remote",
-    "uploader"
-  ],
+  "keywords": [ "URL UPLOADER"],
   "success_url": "https://t.me/Uploader_X_bot",
   "website": "https://github.com/Clinton-Abraham",
   "repository": "https://github.com/Clinton-Abraham/UPLOADER-BOT",
+
   "env": {
-    "WEBHOOK": {
-      "description": "Setting this to ANYTHING will enable webhooks when in env mode",
-      "value": "ANYTHING"
-    },
-    "BOT_TOKEN": {
-      "description": "Your bot token, as a string.",
-      "value": ""
-    },
-    "API_ID": {
-      "description": "Get this value from https://my.telegram.org",
-      "value": ""
-    },
-    "API_HASH": {
-      "description": "Get this value from https://my.telegram.org",
-      "value": ""
-    },
-    "OWNER_ID": {
-      "description": "Your Telegram ID",
-      "value": ""
-    },
-    "DATABASE_URL": {
-      "description": "Your MongoDB URI",
-      "value": ""
-    },
-    "HTTP_PROXY": {
-      "description": "proxy for accessing youtube-dl in GeoRestricted Areas. Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061",
-      "value": "",
-      "required": false
-    }
-  },
-  "addons": [
-  ],
-  "buildpacks": [{
-    "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"
-  }, {
-    "url": "heroku/python"
-  }],
+    "WEBHOOK": {"description": "Setting this to ANYTHING will enable webhooks when in env mode",
+      "value": "ANYTHING"},
+
+    "BOT_TOKEN": {"description": "Your bot token, as a string.",
+        "value": ""},
+
+    "API_ID": {"description": "Get this value from https://my.telegram.org",
+     "value": ""},
+
+    "API_HASH": {"description": "Get this value from https://my.telegram.org",
+       "value": ""},
+
+    "OWNER_ID": {"description": "Your Telegram ID",
+       "value": ""},
+
+    "DATABASE_URL": {"description": "Your MongoDB URI",
+           "value": ""} },
+
+  "addons": [ ],
+  "buildpacks": [ {"url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest"},
+                  {"url": "heroku/python" } ],
   "formation": {
-    "worker": {
-      "quantity": 1,
-      "size": "free"
+     "worker": {
+   "quantity": 1,
+       "size": "free"
     }
   }
 }
