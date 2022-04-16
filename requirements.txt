@@ -12,4 +12,6 @@ aiofiles
 dnspython
 tldextract
 beautifulsoup4
+transliterate
+emoji
 pyrogram==1.4.12

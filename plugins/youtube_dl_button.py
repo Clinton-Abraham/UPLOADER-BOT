@@ -24,6 +24,7 @@ from plugins.custom_thumbnail import *
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from pyrogram.types import InputMediaPhoto
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
+from helper_funcs.help_file import deEmojify
 # https://stackoverflow.com/a/37631799/4723940
 from database.access import clinton
 from PIL import Image
@@ -100,7 +101,7 @@ async def youtube_dl_call_back(bot, update):
     tmp_directory_for_each_user = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
     if not os.path.isdir(tmp_directory_for_each_user):
         os.makedirs(tmp_directory_for_each_user)
-    download_directory = tmp_directory_for_each_user + "/" +  translit(custom_file_name, language_code='ru', reversed=True)
+    download_directory = tmp_directory_for_each_user + "/" +  translit(deEmojify(custom_file_name), reversed=True)
     command_to_exec = []
     if tg_send_type == "audio":
         command_to_exec = [
