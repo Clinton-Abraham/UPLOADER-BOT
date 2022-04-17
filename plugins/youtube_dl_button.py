@@ -100,7 +100,13 @@ async def youtube_dl_call_back(bot, update):
     tmp_directory_for_each_user = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id)
     if not os.path.isdir(tmp_directory_for_each_user):
         os.makedirs(tmp_directory_for_each_user)
-    download_directory = tmp_directory_for_each_user + "/" + str(custom_file_name)
+    if '/' in custom_file_name:
+        file_mimx = custom_file_name
+        file_maix = file_mimx.split('/')
+        file_name = ' '.join(file_maix)
+    else:
+        file_name = custom_file_name
+    download_directory = tmp_directory_for_each_user + "/" + str(file_name)
     command_to_exec = []
     if tg_send_type == "audio":
         command_to_exec = [
