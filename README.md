@@ -38,6 +38,17 @@ heroku/python
 ## 🍃 How To Get Mongodb URI - [ Watch Video ](https://youtu.be/YIYSby2PcfU)
 
 
+## 🚸 HEROKU CLI COMMANDS
+
+`* git heroku login`
+
+`* cd UPLOADER-BOT`
+
+`* git pull origin V2.0`
+
+`* git push heroku master`
+
+
 ## BOT COMMANDS
 
 * start - 👻 Check I'm alive or dead
