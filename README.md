@@ -34,6 +34,10 @@ heroku/python
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://github.com/Clinton-Abraham/UPLOADER-BOT/issues/14#issuecomment-1021253536)
 
+
+##🍃 How To Get Mongodb URI - [ Watch Video ](https://youtu.be/YIYSby2PcfU)
+
+
 ## BOT COMMANDS
 
 * start - 👻 Check I'm alive or dead
