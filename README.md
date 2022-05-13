@@ -44,6 +44,8 @@ heroku/python
 
 `* cd UPLOADER-BOT`
 
+`* heroku git:remote -a app-name'
+
 `* git pull origin V2.0`
 
 `* git push heroku master`
