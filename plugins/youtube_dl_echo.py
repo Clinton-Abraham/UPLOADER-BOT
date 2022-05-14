@@ -110,6 +110,8 @@ async def echo(bot, update):
         # logger.warn("Status : FAIL", exc.returncode, exc.output)
         if "This video is only available for registered users." in error_message:
             error_message = Translation.SET_CUSTOM_USERNAME_PASSWORD
+        else:
+            error_message = "Invalid url 🚸</code>"
         await bot.send_message(chat_id=update.chat.id,
         text=Translation.NO_VOID_FORMAT_FOUND.format(str(error_message)),
         disable_web_page_preview=True, parse_mode="html",
