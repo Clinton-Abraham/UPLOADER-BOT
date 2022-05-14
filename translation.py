@@ -34,3 +34,5 @@ You can use /rename command after receiving file to rename it with custom thumbn
     CANCEL_STR = "Process Cancelled"
     ZIP_UPLOADED_STR = "Uploaded {} files in {} seconds"
     SLOW_URL_DECED = "Gosh that seems to be a very slow URL. Since you were screwing my home, I am in no mood to download this file. Meanwhile, why don't you try this:==> https://shrtz.me/PtsVnf6 and get me a fast URL so that I can upload to Telegram, without me slowing down for other users."
+
+    ERROR_YTDLP = "please report this issue on https://yt-dl.org/bug . Make sure you are using the latest version; see  https://yt-dl.org/update  on how to update. Be sure to call youtube-dl with the --verbose flag and include its complete output."
