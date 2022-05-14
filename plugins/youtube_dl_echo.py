@@ -107,7 +107,7 @@ async def echo(bot, update):
     # logger.info(t_response)
     # https://github.com/rg3/youtube-dl/issues/2630#issuecomment-38635239
     if e_response and "nonnumeric port" not in e_response:
-        # logger.warn("Status : FAIL", exc.returncode, exc.output)
+        error_message = e_response.replace(Translation.ERROR_YTDLP, "")
         if "This video is only available for registered users." in error_message:
             error_message = Translation.SET_CUSTOM_USERNAME_PASSWORD
         else:
