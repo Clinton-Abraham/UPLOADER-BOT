@@ -108,16 +108,13 @@ async def echo(bot, update):
     # https://github.com/rg3/youtube-dl/issues/2630#issuecomment-38635239
     if e_response and "nonnumeric port" not in e_response:
         # logger.warn("Status : FAIL", exc.returncode, exc.output)
-        error_message = e_response.replace("please report this issue on https://yt-dl.org/bug . Make sure you are using the latest version; see  https://yt-dl.org/update  on how to update. Be sure to call youtube-dl with the --verbose flag and include its complete output.", "")
         if "This video is only available for registered users." in error_message:
-            error_message += Translation.SET_CUSTOM_USERNAME_PASSWORD
-        await bot.send_message(
-            chat_id=update.chat.id,
-            text=Translation.NO_VOID_FORMAT_FOUND.format(str(error_message)),
-            reply_to_message_id=update.message_id,
-            parse_mode="html",
-            disable_web_page_preview=True
-        )
+            error_message = Translation.SET_CUSTOM_USERNAME_PASSWORD
+        await bot.send_message(chat_id=update.chat.id,
+        text=Translation.NO_VOID_FORMAT_FOUND.format(str(error_message)),
+        disable_web_page_preview=True, parse_mode="html",
+        reply_to_message_id=update.message_id)
+        await imog.delete(True)
         return False
     if t_response:
         # logger.info(t_response)
