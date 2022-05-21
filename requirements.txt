@@ -4,6 +4,8 @@ yt-dlp
 aiohttp
 hachoir
 olefile
+filetype
+tldextract
 requests
 tgcrypto
 aiofiles
