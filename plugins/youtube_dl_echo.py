@@ -7,7 +7,7 @@ import logging
 logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-import requests, urllib.parse, os, time, shutil, tldextract, asyncio, json, math
+import requests, urllib.parse, os, time, shutil, asyncio, json, math
 
 from config import Config
 from database.adduser import AddUser
