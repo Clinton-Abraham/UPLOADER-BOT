@@ -50,7 +50,7 @@ heroku/python
 
 `* git pull origin V2.0`
 
-`* git push heroku master`
+`* git push heroku V2.0:master`
 
 
 ## BOT COMMANDS
