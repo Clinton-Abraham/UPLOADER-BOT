@@ -71,6 +71,8 @@ heroku/python
 
 * Uᴘʟᴏᴀᴅᴇʀ x ʙᴏᴛ  -  [ ꜱᴛᴀʀᴛ ](https://t.me/uploader_x_bot)
 
+* Sʜᴏʀᴛɴᴇʀ x ʙᴏᴛ  -  [ ꜱᴛᴀʀᴛ ](https://t.me/shortner_x_bot)
+
 ## Credits, and Thanks to
 
 * [@SpEcHlDe](https://t.me/ThankTelegram) for his [AnyDLBot](https://telegram.dog/AnyDLBot)
