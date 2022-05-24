@@ -42,7 +42,7 @@ heroku/python
 
 `* git clone https://github.com/Clinton-Abraham/UPLOADER-BOT.git`
 
-`* git heroku login`
+`* heroku login`
 
 `* cd UPLOADER-BOT`
 
