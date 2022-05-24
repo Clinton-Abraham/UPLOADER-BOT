@@ -40,7 +40,7 @@ heroku/python
 
 ## 🚸 HEROKU CLI COMMANDS
 
-`* git clone `https://github.com/Clinton-Abraham/UPLOADER-BOT.git``
+`* git clone https://github.com/Clinton-Abraham/UPLOADER-BOT.git`
 
 `* git heroku login`
 
