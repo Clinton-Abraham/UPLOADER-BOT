@@ -1,11 +1,8 @@
 ## WARNING ⚠️
 
 ```
-CURRENTLY HEROKU SUSPENDING THIS REPO 😢
+CURRENTLY HEROKU SUSPENDING THIS REPO 😢 I'm not sure.
 ```
-
-
-
 
 #### [UPLOADER-BOT](https://t.me/uploader_x_bot)
 
