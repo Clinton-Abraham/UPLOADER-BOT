@@ -14,8 +14,6 @@ Telegram RoBot to Upload Links.
 
 👉 Upload zee5, sony.live, voot and much more.
 
-👉 Inline torrent search support.
-
 👉  Permanent thumbnail Support.
 
 👉 Broadcast message.
