@@ -18,7 +18,7 @@ class Config(object):
     # default thumbnail to be used in the videos
     # proxy for accessing youtube-dl in GeoRestricted Areas
     # Get your own proxy from https://github.com/rg3/youtube-dl/issues/1091#issuecomment-230163061
-    HTTP_PROXY = "http_proxy="youtube-dl -F"
+    HTTP_PROXY = "http_proxy="182.74.243.47:3128" youtube-dl -F 
     # maximum message length in Telegram
     MAX_MESSAGE_LENGTH = 4096
     # set timeout for subprocess
