@@ -256,7 +256,7 @@ async def youtube_dl_call_back(bot, update):
             end_two = datetime.now()
             time_taken_for_upload = (end_two - end_one).seconds
             asyncio.create_task(clendir(tmp_directory_for_each_user))
-            asyncio.create_task(clendirthumbnail))
+            asyncio.create_task(clendir(thumbnail))
             await bot.edit_message_text(
             text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS.format(time_taken_for_download, time_taken_for_upload),
             chat_id=update.message.chat.id,
