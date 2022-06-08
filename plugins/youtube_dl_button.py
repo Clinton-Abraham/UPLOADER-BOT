@@ -171,7 +171,7 @@ async def youtube_dl_call_back(bot, update):
 
         if file_size == 0:
              await update.message.edit(text="File Not found 🤒")
-             asyncio.create_task(tmp_directory_for_each_user)
+             asyncio.create_task(clendir(tmp_directory_for_each_user))
              return
         if file_size > Config.TG_MAX_FILE_SIZE:
             await bot.edit_message_text(
@@ -255,8 +255,8 @@ async def youtube_dl_call_back(bot, update):
 
             end_two = datetime.now()
             time_taken_for_upload = (end_two - end_one).seconds
-            asyncio.create_task(tmp_directory_for_each_user)
-            asyncio.create_task(thumbnail)
+            asyncio.create_task(clendir(tmp_directory_for_each_user))
+            asyncio.create_task(clendirthumbnail))
             await bot.edit_message_text(
             text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS.format(time_taken_for_download, time_taken_for_upload),
             chat_id=update.message.chat.id,
