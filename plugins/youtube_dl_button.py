@@ -1,32 +1,26 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# (c) Shrimadhav U K | Modified By > @DC4_WARRIOR
+# Modified By > @Clinton_Abraham
 
-# the logging things
 import logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
 logger = logging.getLogger(__name__)
 
-import asyncio
+import os
 import json
 import math
-import os
-import shutil
 import time
-from datetime import datetime
-# the secret configuration specific things
+import shutil
+import asyncio
+from PIL import Image
 from config import Config
-# the Strings used for this "thing"
+from datetime import datetime
+from database.access import clinton
 from translation import Translation
-#from transliterate import translit
 from plugins.custom_thumbnail import *
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from pyrogram.types import InputMediaPhoto
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
-# https://stackoverflow.com/a/37631799/4723940
-from database.access import clinton
-from PIL import Image
 
 
 async def youtube_dl_call_back(bot, update):
@@ -176,25 +170,32 @@ async def youtube_dl_call_back(bot, update):
         file_size = Config.TG_MAX_FILE_SIZE + 1
         try:
             file_size = os.stat(download_directory).st_size
-        except FileNotFoundError as exc:
-            download_directory = os.path.splitext(download_directory)[0] + "." + "mkv"
-            # https://stackoverflow.com/a/678242/4723940
-            file_size = os.stat(download_directory).st_size
+        except FileNotFoundError:
+            try:
+                directory = os.path.splitext(download_directory)[0] + "." + "mp4"
+                file_size = os.stat(directory).st_size
+            except FileNotFoundError:
+                try:
+                    directory = os.path.splitext(download_directory)[0] + "." + "mkv"
+                    file_size = os.stat(directory).st_size
+                except FileNotFoundError:
+                    file_size = 0
+
+        if file_size == 0:
+             await update.message.edit(text="File Not found 🤒")
+             asyncio.create_task(tmp_directory_for_each_user)
+             return
         if file_size > Config.TG_MAX_FILE_SIZE:
             await bot.edit_message_text(
-                chat_id=update.message.chat.id,
-                text=Translation.RCHD_TG_API_LIMIT.format(time_taken_for_download, humanbytes(file_size)),
-                message_id=update.message.message_id
-            )
+            chat_id=update.message.chat.id,
+            text=Translation.RCHD_TG_API_LIMIT.format(time_taken_for_download, humanbytes(file_size)),
+            message_id=update.message.message_id)
         else:
             await bot.edit_message_text(
-                text=Translation.UPLOAD_START,
-                chat_id=update.message.chat.id,
-                message_id=update.message.message_id
-            )
-            # ref: message from @Sources_codes
+            text=Translation.UPLOAD_START,
+            chat_id=update.message.chat.id,
+            message_id=update.message.message_id)
             start_time = time.time()
-            # try to upload file
             if tg_send_type == "audio":
                 duration = await Mdata03(download_directory)
                 thumbnail = await Gthumb01(bot, update)
@@ -261,24 +262,30 @@ async def youtube_dl_call_back(bot, update):
                     supports_streaming=True,
                     reply_to_message_id=update.message.reply_to_message.message_id,
                     progress=progress_for_pyrogram,
-                    progress_args=(
-                        Translation.UPLOAD_START,
-                        update.message,
-                        start_time
-                    )
-                )
-            else:
-                logger.info("Did this happen? :\\")
+                    progress_args=(Translation.UPLOAD_START,
+                    update.message, start_time) )
+
             end_two = datetime.now()
             time_taken_for_upload = (end_two - end_one).seconds
-            try:
-                shutil.rmtree(tmp_directory_for_each_user)
-                os.remove(thumbnail)
-            except:
-                pass
+            asyncio.create_task(tmp_directory_for_each_user)
+            asyncio.create_task(thumbnail)
             await bot.edit_message_text(
-                text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS.format(time_taken_for_download, time_taken_for_upload),
-                chat_id=update.message.chat.id,
-                message_id=update.message.message_id,
-                disable_web_page_preview=True
-            )
+            text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS.format(time_taken_for_download, time_taken_for_upload),
+            chat_id=update.message.chat.id,
+            message_id=update.message.message_id,
+            disable_web_page_preview=True)
+
+#=================================
+
+async def clendir(directory):
+
+    try:
+        shutil.rmtree(directory)
+    except:
+        pass
+    try:
+        os.remove(directory)
+    except:
+        pass
+
+#=================================
