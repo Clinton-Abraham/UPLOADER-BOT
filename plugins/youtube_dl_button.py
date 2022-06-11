@@ -31,11 +31,7 @@ async def youtube_dl_call_back(bot, update):
         with open(save_ytdl_json_path, "r", encoding="utf8") as f:
             response_json = json.load(f)
     except (FileNotFoundError) as e:
-        await bot.delete_messages(
-            chat_id=update.message.chat.id,
-            message_ids=update.message.message_id,
-            revoke=True
-        )
+        await update.message.delete(True)
         return False
     youtube_dl_url = update.message.reply_to_message.text
     custom_file_name = str(response_json.get("title"))[:50] + "_" + youtube_dl_format + "." + youtube_dl_ext
@@ -79,9 +75,7 @@ async def youtube_dl_call_back(bot, update):
     text=Translation.DOWNLOAD_START,
     chat_id=update.message.chat.id,
     message_id=update.message.message_id)
-    user = await bot.get_me()
-    mention = user["mention"]
-    description = Translation.CUSTOM_CAPTION_UL_FILE.format(mention)
+    description = Translation.CUSTOM_CAPTION_UL_FILE)
     if "fulltitle" in response_json:
         description = response_json["fulltitle"][0:1021]
         # escape Markdown and special characters
@@ -97,31 +91,22 @@ async def youtube_dl_call_back(bot, update):
     download_directory = tmp_directory_for_each_user + "/" + str(file_name)
     command_to_exec = []
     if tg_send_type == "audio":
-        command_to_exec = [
-            "yt-dlp",
-            "-c",
-            "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
-            "--prefer-ffmpeg",
-            "--extract-audio",
-            "--audio-format", youtube_dl_ext,
-            "--audio-quality", youtube_dl_format,
-            youtube_dl_url,
-            "-o", download_directory
-        ]
+        command_to_exec = ["yt-dlp", "-c",
+             "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
+             "--prefer-ffmpeg", "--extract-audio",
+             "--audio-format", youtube_dl_ext,
+             "--audio-quality", youtube_dl_format,
+             youtube_dl_url, "-o", download_directory]
     else:
-        # command_to_exec = ["yt-dlp", "-f", youtube_dl_format, "--hls-prefer-ffmpeg", "--recode-video", "mp4", "-k", youtube_dl_url, "-o", download_directory]
         minus_f_format = youtube_dl_format
         if "youtu" in youtube_dl_url:
             minus_f_format = youtube_dl_format + "+bestaudio"
-        command_to_exec = [
-            "yt-dlp",
-            "-c",
+        command_to_exec = ["yt-dlp", "-c",
             "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
-            "--embed-subs",
-            "-f", minus_f_format,
+            "--embed-subs", "-f", minus_f_format,
             "--hls-prefer-ffmpeg", youtube_dl_url,
-            "-o", download_directory
-        ]
+            "-o", download_directory]
+
     if Config.HTTP_PROXY != "":
         command_to_exec.append("--proxy")
         command_to_exec.append(Config.HTTP_PROXY)
@@ -146,16 +131,13 @@ async def youtube_dl_call_back(bot, update):
     if e_response and ad_string_to_replace in e_response:
         error_message = e_response.replace(ad_string_to_replace, "")
         await bot.edit_message_text(
-            chat_id=update.message.chat.id,
-            message_id=update.message.message_id,
-            text=error_message
-        )
+        chat_id=update.message.chat.id,
+        message_id=update.message.message_id,
+        text=error_message)
         return False
     if t_response:
         os.remove(save_ytdl_json_path)
-        end_one = datetime.now()
-        time_taken_for_download = (end_one -start).seconds
-        file_size = Config.TG_MAX_FILE_SIZE + 1
+        asyncio.create_task(clendir(save_ytdl_json_path))
         try:
             file_size = os.stat(download_directory).st_size
         except FileNotFoundError:
@@ -253,12 +235,10 @@ async def youtube_dl_call_back(bot, update):
                     progress_args=(Translation.UPLOAD_START,
                     update.message, start_time) )
 
-            end_two = datetime.now()
-            time_taken_for_upload = (end_two - end_one).seconds
             asyncio.create_task(clendir(tmp_directory_for_each_user))
             asyncio.create_task(clendir(thumbnail))
             await bot.edit_message_text(
-            text=Translation.AFTER_SUCCESSFUL_UPLOAD_MSG_WITH_TS.format(time_taken_for_download, time_taken_for_upload),
+            text="Uploaded sucessfully ✓\n\nJOIN : @SPACE_X_BOTS",
             chat_id=update.message.chat.id,
             message_id=update.message.message_id,
             disable_web_page_preview=True)
