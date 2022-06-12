@@ -122,18 +122,17 @@ async def ddl_call_back(bot, update):
                 message_id=update.message.message_id
             )
         else:
-            # ref: message from @SOURCES_CODES
+            # ref: message from @TeleRoid14
             start_time = time.time()
-            # try to upload file
             if tg_send_type == "audio":
                 duration = await Mdata03(download_directory)
                 thumb_image_path = await Gthumb01(bot, update)
                 await bot.send_audio(
                     chat_id=update.message.chat.id,
                     audio=download_directory,
+                    thumb=thumb_image_path,
                     caption=description,
                     duration=duration,
-                    thumb=thumb_image_path,
                     reply_to_message_id=update.message.reply_to_message.message_id,
                     progress=progress_for_pyrogram,
                     progress_args=(
@@ -147,8 +146,12 @@ async def ddl_call_back(bot, update):
                   await bot.send_document(
                     chat_id=update.message.chat.id,
                     document=download_directory,
-                    thumb=thumb_image_path,
                     caption=description,
+                    duration=duration,
+                    width=width,
+                    height=height,
+                    supports_streaming=True,
+                    thumb=thumb_image_path,
                     reply_to_message_id=update.message.reply_to_message.message_id,
                     progress=progress_for_pyrogram,
                     progress_args=(
@@ -163,6 +166,8 @@ async def ddl_call_back(bot, update):
                  await bot.send_video_note(
                     chat_id=update.message.chat.id,
                     video_note=download_directory,
+                    caption=description,
+                    parse_mode="HTML",
                     duration=duration,
                     length=width,
                     thumb=thumb_image_path,
@@ -175,9 +180,9 @@ async def ddl_call_back(bot, update):
                     )
                 )
             elif tg_send_type == "video":
-                 width, height, duration = await Mdata01(download_directory)
-                 thumb_image_path = await Gthumb02(bot, update, duration, download_directory)
-                 await bot.send_video(
+                width, height, duration = await Mdata01(download_directory)
+                thumb_image_path = await Gthumb02(bot, update, duration, download_directory)
+                await bot.send_video(
                     chat_id=update.message.chat.id,
                     video=download_directory,
                     caption=description,
@@ -218,7 +223,6 @@ async def ddl_call_back(bot, update):
             disable_web_page_preview=True
         )
 
-
 async def download_coroutine(bot, session, url, file_name, chat_id, message_id, start):
     downloaded = 0
     display_message = ""
@@ -231,8 +235,8 @@ async def download_coroutine(bot, session, url, file_name, chat_id, message_id, 
             chat_id,
             message_id,
             text="""Initiating Download
-URL: {}
-File Size: {}""".format(url, humanbytes(total_length))
+**🔗 Uʀʟ :** `{}`
+**🗂️ Sɪᴢᴇ :** {}""".format(url, humanbytes(total_length))
         )
         with open(file_name, "wb") as f_handle:
             while True:
@@ -251,11 +255,14 @@ File Size: {}""".format(url, humanbytes(total_length))
                         (total_length - downloaded) / speed) * 1000
                     estimated_total_time = elapsed_time + time_to_completion
                     try:
-                        current_message = """**Download Status**
-URL: {}
-File Size: {}
-Downloaded: {}
-ETA: {}""".format(
+                        current_message = """**DᴏᴡɴʟᴏᴀᴅɪɴG**
+**🔗 Uʀʟ :** `{}`
+
+**🗂️ Sɪᴢᴇ :** {}
+
+**✅ Dᴏɴᴇ :** {}
+
+**⏱️ Eᴛᴀ :** {}""".format(
     url,
     humanbytes(total_length),
     humanbytes(downloaded),
