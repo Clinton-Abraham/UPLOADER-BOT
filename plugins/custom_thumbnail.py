@@ -26,30 +26,57 @@ from pyrogram import filters
 from database.adduser import AddUser
 from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 
-@Clinton.on_message(filters.private & filters.photo)
-async def save_photo(bot, update):
-    await AddUser(bot, update)
-    await clinton.set_thumbnail(update.from_user.id, thumbnail=update.photo.file_id)
-    await bot.send_message(chat_id=update.chat.id, text=Translation.SAVED_CUSTOM_THUMB_NAIL, reply_to_message_id=update.message_id)
+@Clinton.on_message(filters.private & filters.photo & ~filters.edited)
+async def photo_handler(bot: Client, event: Message):
+    if not event.from_user:
+        return await event.reply_text("I don't know about you sar :(")
+    await AddUser(bot, event)
+    if Config.UPDATES_CHANNEL:
+      fsub = await handle_force_subscribe(bot, event)
+      if fsub == 400:
+        return
+    editable = await event.reply_text("**👀 Processing...**")
+    await db.set_thumbnail(event.from_user.id, thumbnail=event.photo.file_id)
+    await editable.edit("**✅ ᴄᴜsᴛᴏᴍ ᴛʜᴜᴍʙɴᴀɪʟ sᴀᴠᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!!**")
 
-@Clinton.on_message(filters.private & filters.command("delthumbnail"))
-async def delthumbnail(bot, update):
-    await AddUser(bot, update)
-    await clinton.set_thumbnail(update.from_user.id, thumbnail=None)
-    await bot.send_message(chat_id=update.chat.id, text=Translation.DEL_ETED_CUSTOM_THUMB_NAIL, reply_to_message_id=update.message_id)
 
-@Clinton.on_message(filters.private & filters.command("viewthumbnail") )
+@Clinton.on_message(filters.private & filters.command(["delthumb", "deletethumbnail"]) & ~filters.edited)
+async def delete_thumb_handler(bot: Client, event: Message):
+    if not event.from_user:
+        return await event.reply_text("I don't know about you sar :(")
+    await AddUser(bot, event)
+    if Config.UPDATES_CHANNEL:
+      fsub = await handle_force_subscribe(bot, event)
+      if fsub == 400:
+        return
+
+    await clinton.set_thumbnail(event.from_user.id, thumbnail=None)
+    await event.reply_text(
+        "**🗑️ ᴄᴜsᴛᴏᴍ ᴛʜᴜᴍʙɴᴀɪʟ ᴅᴇʟᴇᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!!**",
+        reply_markup=InlineKeyboardMarkup([
+            [InlineKeyboardButton("⚙ ᴄᴏɴғɪɢᴜʀᴇ sᴇᴛᴛɪɴɢs 👀", callback_data="OpenSettings")]
+        ])
+    )
+
+@Clinton.on_message(filters.private & filters.command("showthumb") )
 async def viewthumbnail(bot, update):
-    await AddUser(bot, update)
+    if not update.from_user:
+        return await update.reply_text("I don't know about you sar :(")
+    await AddUser(bot, update) 
+    if Config.UPDATES_CHANNEL:
+      fsub = await handle_force_subscribe(bot, update)
+      if fsub == 400:
+        return   
     thumbnail = await clinton.get_thumbnail(update.from_user.id)
     if thumbnail is not None:
         await bot.send_photo(
         chat_id=update.chat.id,
         photo=thumbnail,
-        caption=f"Your current saved thumbnail 🦠",
+        caption=f"ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ sᴀᴠᴇᴅ ᴛʜᴜᴍʙɴᴀɪʟ 🦠",
         reply_to_message_id=update.message_id)
     else:
-        await update.reply_text(text=f"No Thumbnail found 🤒")
+        await update.reply_text(text=f"ɴᴏ ᴛʜᴜᴍʙɴᴀɪʟ ғᴏᴜɴᴅ 🤒")
+
 
 async def Gthumb01(bot, update):
     thumb_image_path = Config.DOWNLOAD_LOCATION + "/" + str(update.from_user.id) + ".jpg"
