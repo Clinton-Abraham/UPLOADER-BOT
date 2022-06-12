@@ -25,7 +25,7 @@ from database.adduser import AddUser
 from pyrogram import Client as Clinton
 logging.getLogger("pyrogram").setLevel(logging.WARNING)
 
-from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQuery
+from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message, CallbackQuery, ForceReply
 
 
 @Clinton.on_message(filters.private & filters.command(["help"]))
@@ -41,7 +41,7 @@ async def help_user(bot, update):
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
-        reply_markup=InlineKeyboardMarkup([[InlineKeyboardButton(text="⭕️ Join Updates Channel ⭕️", url="https://t.me/TeleRoidGroup")]]),
+        reply_markup=Translation.HELP_BUTTONS
    )
 
 
@@ -58,14 +58,11 @@ async def start(bot, update):
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
-        reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="⭕ Channel ⭕", url="https://t.me/TeleRoidGroup"),
-                                               InlineKeyboardButton(text="😇 Support", url="https://t.me/TeleRoid14") ],
-                                             [ InlineKeyboardButton(text="🆘 Help ", callback_data="help"),                                                
-                                               InlineKeyboardButton(text="👥 About ", callback_data="aboutbot") ],
-                                             [ InlineKeyboardButton(text="🔐 Close🔐", callback_data="close") ] ] ) )
+        reply_markup=Translation.START_BUTTONS
+    )
 
 @Clinton.on_message(filters.private & filters.command("about") )
-async def about(bot, update):
+async def about_user(bot, update):
     # logger.info(update)
     await AddUser(bot, update)
     forcesub = await ForceSub(bot, update)
@@ -77,7 +74,5 @@ async def about(bot, update):
         parse_mode="html",
         disable_web_page_preview=True,
         reply_to_message_id=update.message_id,
-        reply_markup=InlineKeyboardMarkup( [ [ InlineKeyboardButton(text="🚸 Powered By", url="https://t.me/MoviesFlixers_DL") ],
-                                             [ InlineKeyboardButton(text="🌀 BotsList", url="https://t.me/joinchat/t1ko_FOJxhFiOThl"),
-                                               InlineKeyboardButton(text="💢 Source Code", url="https://github.com/PredatorHackerzZ/Uploader-Bot") ] ] ) )
-
+        reply_markup=Translation.ABOUT_BUTTONS
+    )
