@@ -27,31 +27,31 @@ from database.adduser import AddUser
 from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 
 @Clinton.on_message(filters.private & filters.photo & ~filters.edited)
-async def photo_handler(bot: Client, event: Message):
-    if not event.from_user:
-        return await event.reply_text("I don't know about you sar :(")
-    await AddUser(bot, event)
+async def photo_handler(bot, update):
+    if not update.from_user:
+        return await update.reply_text("I don't know about you sar :(")
+    await AddUser(bot, update)
     if Config.UPDATES_CHANNEL:
-      fsub = await ForceSub(bot, event)
+      fsub = await ForceSub(bot, update)
       if fsub == 400:
         return
-    editable = await event.reply_text("**👀 Processing...**")
-    await db.set_thumbnail(event.from_user.id, thumbnail=event.photo.file_id)
+    editable = await update.reply_text("**👀 Processing...**")
+    await clinton.set_thumbnail(update.from_user.id, thumbnail=update.photo.file_id)
     await editable.edit("**✅ ᴄᴜsᴛᴏᴍ ᴛʜᴜᴍʙɴᴀɪʟ sᴀᴠᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!!**")
 
 
 @Clinton.on_message(filters.private & filters.command(["delthumb", "deletethumbnail"]) & ~filters.edited)
-async def delete_thumb_handler(bot: Client, event: Message):
+async def delete_thumb_handler(bot, update):
     if not event.from_user:
-        return await event.reply_text("I don't know about you sar :(")
-    await AddUser(bot, event)
+        return await update.reply_text("I don't know about you sar :(")
+    await AddUser(bot, update)
     if Config.UPDATES_CHANNEL:
-      fsub = await ForceSub(bot, event)
+      fsub = await ForceSub(bot, update)
       if fsub == 400:
         return
 
     await clinton.set_thumbnail(event.from_user.id, thumbnail=None)
-    await event.reply_text(
+    await update.reply_text(
         "**🗑️ ᴄᴜsᴛᴏᴍ ᴛʜᴜᴍʙɴᴀɪʟ ᴅᴇʟᴇᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!!**",
         reply_markup=InlineKeyboardMarkup([
             [InlineKeyboardButton("⚙ Join Updates Channel ⚙", url="https://t.me/TheTeleRoid")]
@@ -72,10 +72,10 @@ async def viewthumbnail(bot, update):
         await bot.send_photo(
         chat_id=update.chat.id,
         photo=thumbnail,
-        caption=f"ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ sᴀᴠᴇᴅ ᴛʜᴜᴍʙɴᴀɪʟ 🦠",
+        caption=f"ʏᴏᴜʀ ᴄᴜʀʀᴇɴᴛ Sᴀᴠᴇᴅ ᴛʜᴜᴍʙɴᴀɪʟ 🦠",
         reply_to_message_id=update.message_id)
     else:
-        await update.reply_text(text=f"ɴᴏ ᴛʜᴜᴍʙɴᴀɪʟ ғᴏᴜɴᴅ 🤒")
+        await update.reply_text(text=f"Nᴏ ᴛʜᴜᴍʙɴᴀɪʟ Fᴏᴜɴᴅ 🤒")
 
 
 async def Gthumb01(bot, update):
