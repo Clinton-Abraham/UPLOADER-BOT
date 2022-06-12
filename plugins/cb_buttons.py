@@ -16,78 +16,29 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, CallbackQ
 
 @Clinton.on_callback_query()
 async def button(bot, update):
-
-    cb_data = update.data
-    if "|" in cb_data:
-        await youtube_dl_call_back(bot, update)
-    elif "=" in cb_data:
-        await ddl_call_back(bot, update)
-    elif "aboutbot" in cb_data:
-        await update.message.edit(
-            text=Translation.ABOUT_TEXT,
-            parse_mode="html",
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-					[
-						InlineKeyboardButton("🆘 Help", callback_data="help"),
-						InlineKeyboardButton("🐱 SourceCode", url="https://github.com/PredatorHackerzZ/UPLOADER-BOT")
-					],
-					[
-						InlineKeyboardButton("🏡 Home", callback_data="gotohome"),
-						InlineKeyboardButton("🔐 Close", callback_data="close")
-					]
-	        ]
-            )
-        )
-
-    elif "help" in cb_data:
-        await update.message.edit(
-            text=Translation.HELP_USER,
-            parse_mode="Markdown",
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                                        [
-						InlineKeyboardButton("👥 About ", callback_data="aboutbot"),
-						InlineKeyboardButton("🐱 SourceCode", url="https://github.com/PredatorHackerzZ/UPLOADER-BOT")
-					],
-					[
-						InlineKeyboardButton("🏡 Home", callback_data="gotohome"),
-						InlineKeyboardButton("🔐 Close ", callback_data="close")
-					]
-                ]
-            )
-        )
-
-    elif "gotohome" in cb_data:
-        await update.message.edit(
+    if update.data == "home":
+        await update.message.edit_text(
             text=Translation.START_TEXT.format(update.from_user.mention),
-            parse_mode="Markdown",
-            disable_web_page_preview=True,
-            reply_markup=InlineKeyboardMarkup(
-                [
-                    [
-						InlineKeyboardButton("⭕ Channel ⭕", url="https://t.me/TeleRoidGroup"),
-						InlineKeyboardButton("😇 Support", url="https://t.me/TeleRoid14")
-					],
-					[
-						InlineKeyboardButton("👥 About", callback_data="aboutbot"),
-						InlineKeyboardButton("🆘 Help", callback_data="help")
-					],
-                                        [
-						InlineKeyboardButton("😺 GitHub", url="https://GitHub.com/PredatorHackerzZ"),
-						InlineKeyboardButton("💸 Donate", url="https://www.paypal.me/AbhishekKumarIN47")
-	                                ],
-                                        [
-						InlineKeyboardButton("🔐 Close", callback_data="close")
-	            ]
-                ]
-            )
+            reply_markup=Translation.START_BUTTONS,
+            disable_web_page_preview=True
         )
+    elif update.data == "help":
+        await update.message.edit_text(
+            text=Translation.HELP_TEXT,
+            reply_markup=Translation.HELP_BUTTONS,
+            disable_web_page_preview=True
+        )
+    elif update.data == "about":
+        await update.message.edit_text(
+            text=Translation.ABOUT_TEXT,
+            reply_markup=Translation.ABOUT_BUTTONS,
+            disable_web_page_preview=True
+        )
+    elif "|" in update.data:
+        await youtube_dl_call_back(bot, update)
+    elif "=" in update.data:
+        await ddl_call_back(bot, update)
 
-@Clinton.on_callback_query()
-async def button(bot, update):
- 
-      if  'close'  in update.data:
-                await update.message.delete()
+    else:
+        await update.message.delete()
+
