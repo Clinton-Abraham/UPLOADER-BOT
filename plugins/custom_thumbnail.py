@@ -32,7 +32,7 @@ async def photo_handler(bot: Client, event: Message):
         return await event.reply_text("I don't know about you sar :(")
     await AddUser(bot, event)
     if Config.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, event)
+      fsub = await ForceSub(bot, event)
       if fsub == 400:
         return
     editable = await event.reply_text("**👀 Processing...**")
@@ -46,7 +46,7 @@ async def delete_thumb_handler(bot: Client, event: Message):
         return await event.reply_text("I don't know about you sar :(")
     await AddUser(bot, event)
     if Config.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, event)
+      fsub = await ForceSub(bot, event)
       if fsub == 400:
         return
 
@@ -54,7 +54,7 @@ async def delete_thumb_handler(bot: Client, event: Message):
     await event.reply_text(
         "**🗑️ ᴄᴜsᴛᴏᴍ ᴛʜᴜᴍʙɴᴀɪʟ ᴅᴇʟᴇᴛᴇᴅ sᴜᴄᴄᴇssғᴜʟʟʏ!!**",
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("⚙ ᴄᴏɴғɪɢᴜʀᴇ sᴇᴛᴛɪɴɢs 👀", callback_data="OpenSettings")]
+            [InlineKeyboardButton("⚙ Join Updates Channel ⚙", url="https://t.me/TheTeleRoid")]
         ])
     )
 
@@ -64,7 +64,7 @@ async def viewthumbnail(bot, update):
         return await update.reply_text("I don't know about you sar :(")
     await AddUser(bot, update) 
     if Config.UPDATES_CHANNEL:
-      fsub = await handle_force_subscribe(bot, update)
+      fsub = await ForceSub(bot, update)
       if fsub == 400:
         return   
     thumbnail = await clinton.get_thumbnail(update.from_user.id)
