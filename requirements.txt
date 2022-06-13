@@ -1,6 +1,5 @@
 numpy
 Pillow
-yt-dlp
 aiohttp
 hachoir
 olefile
@@ -9,5 +8,6 @@ tgcrypto
 aiofiles
 dnspython
 motor[srv]
+youtube-dl
 beautifulsoup4
 pyrogram==1.4.16
