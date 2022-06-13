@@ -91,7 +91,7 @@ async def youtube_dl_call_back(bot, update):
     download_directory = tmp_directory_for_each_user + "/" + str(file_name)
     command_to_exec = []
     if tg_send_type == "audio":
-        command_to_exec = ["yt-dlp", "-c",
+        command_to_exec = ["youtube-dl", "-c",
              "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
              "--prefer-ffmpeg", "--extract-audio",
              "--audio-format", youtube_dl_ext,
@@ -101,7 +101,7 @@ async def youtube_dl_call_back(bot, update):
         minus_f_format = youtube_dl_format
         if "youtu" in youtube_dl_url:
             minus_f_format = youtube_dl_format + "+bestaudio"
-        command_to_exec = ["yt-dlp", "-c",
+        command_to_exec = ["youtube-dl", "-c",
             "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
             "--embed-subs", "-f", minus_f_format,
             "--hls-prefer-ffmpeg", youtube_dl_url,
