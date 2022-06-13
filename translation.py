@@ -9,7 +9,7 @@ I ᴀᴍ Tᴇʟᴇɢʀᴀᴍ Mᴏsᴛ Pᴏᴡᴇʀғᴜʟ Uʀʟ Uᴘʟᴏᴀᴅ�
 
 Usᴇ /help ʙᴜᴛᴛᴏɴ ᴛᴏ ᴋɴᴏᴡ ʜᴏᴡ ᴛᴏ ᴜsᴇ ᴍᴇ.
 
-Mᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : [@TᴇʟᴇRᴏɪᴅGʀᴏᴜᴘ](https://telegram.me/TeleRoidGroup)
+Mᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : @TeleRoidGroup
 """
     HELP_TEXT = """
 Lɪɴᴋ ᴛᴏ Mᴇᴅɪᴀ ᴏʀ Fɪʟᴇ
@@ -36,25 +36,25 @@ sʜᴏᴡ ᴛʜᴜᴍʙɴᴀɪʟ
  
 """
     ABOUT_TEXT = """
-**Mʏ ɴᴀᴍᴇ** : [ᴜᴘʟᴏᴀᴅᴇʀ ʙᴏᴛ](http://t.me/UrlUpxBot)
+<b>Mʏ ɴᴀᴍᴇ : <a href='http://t.me/UrlUpxBot'>ᴜᴘʟᴏᴀᴅᴇʀ ʙᴏᴛ</b>
 
-**Cʜᴀɴɴᴇʟ** : [TᴇʟᴇRᴏɪᴅGʀᴏᴜᴘ](https://t.me/TeleRoidGroup)
+<b>Cʜᴀɴɴᴇʟ : <a href='https://t.me/TeleRoidGroup'>@TᴇʟᴇRᴏɪᴅGʀᴏᴜᴘ</b>
 
-**Sᴜᴘᴘᴏʀᴛ** : [@Tᴇʟᴇʀᴏɪᴅ𝟷𝟺](https://t.me/TeleRoid14)
+<b>Sᴜᴘᴘᴏʀᴛ : <a href='https://t.me/TeleRoid14'>@Tᴇʟᴇʀᴏɪᴅ𝟷𝟺</b>
 
-**Vᴇʀꜱɪᴏɴ** : [2.0 ʙᴇᴛᴀ](https://t.me/joinchat/t1ko_FOJxhFiOThl)
+<b>Vᴇʀꜱɪᴏɴ : <a href='https://t.me/joinchat/t1ko_FOJxhFiOThl'>2.0 ʙᴇᴛᴀ</b>
 
-**Sᴏᴜʀᴄᴇ** : [ᴄʟɪᴄᴋ ʜᴇʀᴇ](https://github.com/PredatorHackerzZ)
+<b>Sᴏᴜʀᴄᴇ : <a href='https://github.com/PredatorHackerzZ'>ᴄʟɪᴄᴋ ʜᴇʀᴇ</b>
 
-**Sᴇʀᴠᴇʀ** : [ʜᴇʀᴏᴋᴜ](https://heroku.com/)
+<b>Sᴇʀᴠᴇʀ : <a href='https://heroku.com/'>ʜᴇʀᴏᴋᴜ</b>
 
-**Lᴀɴɢᴜᴀɢᴇ :** [Pʏᴛʜᴏɴ 3.10.2](https://www.python.org/)
+<b>Lᴀɴɢᴜᴀɢᴇ : <a href='https://www.python.org/'>Pʏᴛʜᴏɴ 3.10.2</b>
 
-**Fʀᴀᴍᴇᴡᴏʀᴋ :** [ᴘʏʀᴏɢᴀᴍ 1.3.6](https://docs.pyrogram.org/)
+<b>Fʀᴀᴍᴇᴡᴏʀᴋ : <a href='https://docs.pyrogram.org/'>ᴘʏʀᴏɢᴀᴍ 1.3.6</b>
 
-**Dᴇᴠᴇʟᴏᴘᴇʀ :** [Pʀᴇᴅᴀᴛᴏʀ](https://t.me/MoviesFlixers_DL)
+<b>Dᴇᴠᴇʟᴏᴘᴇʀ : <a href='https://t.me/MoviesFlixers_DL'>Pʀᴇᴅᴀᴛᴏʀ</b>
 
-**Mᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ :** [@TʜᴇTᴇʟᴇRᴏɪᴅ](https://t.me/TheTeleRoid)
+<b>Mᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : <a href='https://t.me/TheTeleRoid'>@TʜᴇTᴇʟᴇRᴏɪᴅ</b>
 
 """
 
