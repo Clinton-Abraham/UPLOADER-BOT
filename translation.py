@@ -32,7 +32,7 @@ sʜᴏᴡ ᴛʜᴜᴍʙɴᴀɪʟ
 
 ➠ Sᴇɴᴅ /showthumb ᴛᴏ ᴠɪᴇᴡ ᴄᴜsᴛᴏᴍ ᴛʜᴜᴍʙɴᴀɪʟ.
 
-ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : [@TheᴇʟᴇRᴏɪᴅ](https://telegram.me/TheTeleRoid)
+ᴍᴀɪɴᴛᴀɪɴᴇᴅ ʙʏ : @TheTeleRoid
  
 """
     ABOUT_TEXT = """
