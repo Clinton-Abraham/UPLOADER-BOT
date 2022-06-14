@@ -34,11 +34,15 @@ async def button(bot, update):
             reply_markup=Translation.ABOUT_BUTTONS,
             disable_web_page_preview=True
         )
-    elif "|" in update.data:
-        await youtube_dl_call_back(bot, update)
-    elif "=" in update.data:
-        await ddl_call_back(bot, update)
 
     else:
         await update.message.delete()
 
+@Clinton.on_callback_query()
+async def button(bot, update):
+
+    cb_data = update.data
+    if "|" in cb_data:
+        await youtube_dl_call_back(bot, update)
+    elif "=" in cb_data:
+        await ddl_call_back(bot, update)
