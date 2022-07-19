@@ -165,11 +165,12 @@ async def youtube_dl_call_back(bot, update):
             text=Translation.UPLOAD_START,
             chat_id=update.message.chat.id,
             message_id=update.message.message_id)
-            start_time = time.time()
-            if tg_send_type == "audio":
-                duration = await Mdata03(download_directory)
-                thumbnail = await Gthumb01(bot, update)
-                await bot.send_audio(
+            try:
+                start_time = time.time()
+                if tg_send_type == "audio":
+                    duration = await Mdata03(download_directory)
+                    thumbnail = await Gthumb01(bot, update)
+                    await bot.send_audio(
                     chat_id=update.message.chat.id,
                     audio=download_directory,
                     caption=description,
@@ -178,50 +179,32 @@ async def youtube_dl_call_back(bot, update):
                     thumb=thumbnail,
                     reply_to_message_id=update.message.reply_to_message.message_id,
                     progress=progress_for_pyrogram,
-                    progress_args=(
-                        Translation.UPLOAD_START,
-                        update.message,
-                        start_time
-                    )
-                )
-            elif tg_send_type == "file":
-                thumbnail = await Gthumb01(bot, update)
-                await bot.send_document(
-                    chat_id=update.message.chat.id,
+                    progress_args=(Translation.UPLOAD_START, update.message, start_time))
+                elif tg_send_type == "file":
+                    thumbnail = await Gthumb01(bot, update)
+                    await bot.send_document(chat_id=update.message.chat.id,
                     document=download_directory,
                     thumb=thumbnail,
                     caption=description,
                     parse_mode="HTML",
                     reply_to_message_id=update.message.reply_to_message.message_id,
                     progress=progress_for_pyrogram,
-                    progress_args=(
-                        Translation.UPLOAD_START,
-                        update.message,
-                        start_time
-                    )
-                )
-            elif tg_send_type == "vm":
-                width, duration = await Mdata02(download_directory)
-                thumbnail = await Gthumb02(bot, update, duration, download_directory)
-                await bot.send_video_note(
-                    chat_id=update.message.chat.id,
+                    progress_args=(Translation.UPLOAD_START, update.message, start_time))
+                elif tg_send_type == "vm":
+                    width, duration = await Mdata02(download_directory)
+                    thumbnail = await Gthumb02(bot, update, duration, download_directory)
+                    await bot.send_video_note(chat_id=update.message.chat.id,
                     video_note=download_directory,
                     duration=duration,
                     length=width,
                     thumb=thumb_image_path,
                     reply_to_message_id=update.message.reply_to_message.message_id,
                     progress=progress_for_pyrogram,
-                    progress_args=(
-                        Translation.UPLOAD_START,
-                        update.message,
-                        start_time
-                    )
-                )
-            elif tg_send_type == "video":
-                 width, height, duration = await Mdata01(download_directory)
-                 thumbnail = await Gthumb02(bot, update, duration, download_directory)
-                 await bot.send_video(
-                    chat_id=update.message.chat.id,
+                    progress_args=(Translation.UPLOAD_START, update.message, start_time))
+                elif tg_send_type == "video":
+                    width, height, duration = await Mdata01(download_directory)
+                    thumbnail = await Gthumb02(bot, update, duration, download_directory)
+                    await bot.send_video(chat_id=update.message.chat.id,
                     video=download_directory,
                     caption=description,
                     parse_mode="HTML",
@@ -235,13 +218,18 @@ async def youtube_dl_call_back(bot, update):
                     progress_args=(Translation.UPLOAD_START,
                     update.message, start_time) )
 
-            asyncio.create_task(clendir(tmp_directory_for_each_user))
-            asyncio.create_task(clendir(thumbnail))
-            await bot.edit_message_text(
-            text="Uploaded sucessfully ✓\n\nJOIN : @SPACE_X_BOTS",
-            chat_id=update.message.chat.id,
-            message_id=update.message.message_id,
-            disable_web_page_preview=True)
+                asyncio.create_task(clendir(tmp_directory_for_each_user))
+                asyncio.create_task(clendir(thumbnail))
+                await bot.edit_message_text(
+                text="Uploaded sucessfully ✓\n\nJOIN : @SPACE_X_BOTS",
+                chat_id=update.message.chat.id,
+                message_id=update.message.message_id,
+                disable_web_page_preview=True)
+
+            except Exception as e:
+                asyncio.create_task(clendir(tmp_directory_for_each_user))
+                await bot.edit_message_text(text=Translation.ERROR.format(e),
+                chat_id=update.message.chat.id, message_id=update.message.message_id)
 
 #=================================
 
