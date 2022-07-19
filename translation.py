@@ -1,4 +1,7 @@
 class Translation(object):
+
+    ERROR = "<b>ERROR :</b> {}"
+
     START_TEXT = """Hi {},
 I'm URL X Uploader!
 You can upload HTTP/HTTPS direct link, Using this bot!
