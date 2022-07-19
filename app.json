@@ -22,6 +22,9 @@
     "OWNER_ID": {"description": "Your Telegram ID",
        "value": ""},
 
+    "PREMIUM_USER": {"description": "If you are a telegram premium user then set this True",
+       "value": "false"},
+
     "DATABASE_URL": {"description": "Your MongoDB URI",
            "value": ""} },
 
