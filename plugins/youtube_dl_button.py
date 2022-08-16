@@ -142,19 +142,12 @@ async def youtube_dl_call_back(bot, update):
             file_size = os.stat(download_directory).st_size
         except FileNotFoundError:
             try:
-                directory = os.path.splitext(download_directory)[0] + "." + "mp4"
-                file_size = os.stat(directory).st_size
-            except FileNotFoundError:
-                try:
-                    directory = os.path.splitext(download_directory)[0] + "." + "mkv"
-                    file_size = os.stat(directory).st_size
-                except FileNotFoundError:
-                    file_size = 0
-
-        if file_size == 0:
-             await update.message.edit(text="File Not found 🤒")
-             asyncio.create_task(clendir(tmp_directory_for_each_user))
-             return
+                download_directory = os.path.splitext(download_directory)[0] + "." + "mkv"
+                file_size = os.stat(download_directory).st_size
+            except Exception:
+                await update.message.edit(text="File Not found 🤒")
+                asyncio.create_task(clendir(tmp_directory_for_each_user))
+                return
         if file_size > Config.TG_MAX_FILE_SIZE:
             await bot.edit_message_text(
             chat_id=update.message.chat.id,
