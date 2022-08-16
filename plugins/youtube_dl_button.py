@@ -136,7 +136,6 @@ async def youtube_dl_call_back(bot, update):
         text=error_message)
         return False
     if t_response:
-        os.remove(save_ytdl_json_path)
         asyncio.create_task(clendir(save_ytdl_json_path))
         try:
             file_size = os.stat(download_directory).st_size
