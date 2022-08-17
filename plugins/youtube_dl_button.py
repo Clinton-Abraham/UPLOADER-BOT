@@ -210,7 +210,7 @@ async def youtube_dl_call_back(bot, update):
                     progress_args=(Translation.UPLOAD_START,
                     update.message, start_time) )
 
-                asyncio.create_task(clendir(tmp_directory_for_each_user))
+                asyncio.create_task(clendir(download_directory))
                 asyncio.create_task(clendir(thumbnail))
                 await bot.edit_message_text(
                 text="Uploaded sucessfully ✓\n\nJOIN : @SPACE_X_BOTS",
@@ -219,7 +219,7 @@ async def youtube_dl_call_back(bot, update):
                 disable_web_page_preview=True)
 
             except Exception as e:
-                asyncio.create_task(clendir(tmp_directory_for_each_user))
+                asyncio.create_task(clendir(download_directory))
                 await bot.edit_message_text(text=Translation.ERROR.format(e),
                 chat_id=update.message.chat.id, message_id=update.message.message_id)
 
