@@ -3,8 +3,13 @@
 # (c) Shrimadhav U K | Modifieded By : @DC4_WARRIOR
 
 import os
+import logging
 from config import Config
 from pyrogram import Client as Clinton
+logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logging.getLogger("pyrogram").setLevel(logging.WARNING)
+logger = logging.getLogger(__name__)
+
 
 if __name__ == "__main__" :
     # create download directory, if not exist
