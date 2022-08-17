@@ -1,3 +1,7 @@
+# SOURCE CODE EXPIRED [ 🗑️ ] 🤧
+
+
+
 #### [UPLOADER-BOT](https://t.me/uploader_x_bot)
 
 [![Size](https://img.shields.io/github/repo-size/Clinton-Abraham/UPLOADER-BOT?style=flat-square&color=green)](https://github.com/Clinton-Abraham/UPLOADER-BOT)
