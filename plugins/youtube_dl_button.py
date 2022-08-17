@@ -228,10 +228,6 @@ async def youtube_dl_call_back(bot, update):
 async def clendir(directory):
 
     try:
-        shutil.rmtree(directory)
-    except:
-        pass
-    try:
         os.remove(directory)
     except:
         pass
