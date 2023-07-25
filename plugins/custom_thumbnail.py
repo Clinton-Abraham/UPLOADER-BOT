@@ -100,7 +100,6 @@ async def Mdata03(download_directory):
 
 async def get_flocation(download_directory, extension):
     try:
-        
         file_size = os.stat(download_directory).st_size
         return file_size, download_directory
     except Exception:
