@@ -217,6 +217,7 @@ async def youtube_dl_call_back(bot, update):
                 await bot.edit_message_text(text=Translation.ERROR.format(e),
                 chat_id=update.message.chat.id, message_id=update.message.message_id)
     else:
+        asyncio.create_task(clendir(tmp_directory_for_each_user))
         await bot.edit_message_text(chat_id=update.message.chat.id,
         text="ERROR : File not found 😑", message_id=update.message.message_id)
 
