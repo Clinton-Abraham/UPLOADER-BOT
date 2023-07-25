@@ -109,10 +109,10 @@ async def youtube_dl_call_back(bot, update):
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
-    if e_response:
-        await bot.edit_message_text(chat_id=update.message.chat.id,
-        message_id=update.message.message_id, text="ERROR : Download failed ⚠️")
-        return
+    #if e_response:
+        #await bot.edit_message_text(chat_id=update.message.chat.id,
+        #message_id=update.message.message_id, text="ERROR : Download failed ⚠️")
+        #return
     if not t_response:
         asyncio.create_task(clendir(tmp_directory_for_each_user))
         await bot.edit_message_text(chat_id=update.message.chat.id,
