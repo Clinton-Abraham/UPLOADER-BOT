@@ -121,8 +121,7 @@ async def youtube_dl_call_back(bot, update):
 
     start = datetime.now()
     process = await asyncio.create_subprocess_exec(*command_to_exec,
-    stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE,)
-
+    stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
@@ -137,16 +136,11 @@ async def youtube_dl_call_back(bot, update):
         return
     if t_response:
         asyncio.create_task(clendir(save_ytdl_json_path))
-        try:
-            file_size = os.stat(download_directory).st_size
-        except FileNotFoundError:
-            try:
-                download_directory = os.path.splitext(download_directory)[0] + "." + "mkv"
-                file_size = os.stat(download_directory).st_size
-            except Exception:
-                await update.message.edit(text="File Not found 🤒")
-                asyncio.create_task(clendir(tmp_directory_for_each_user))
-                return
+        file_size, file_location = await get_flocation(download_directory, youtube_dl_ext)
+        if file_size == 0:
+            await update.message.edit(text="File Not found 🤒")
+            asyncio.create_task(clendir(tmp_directory_for_each_user))
+            return
         if file_size > Config.TG_MAX_FILE_SIZE:
             await bot.edit_message_text(
             chat_id=update.message.chat.id,
@@ -160,11 +154,11 @@ async def youtube_dl_call_back(bot, update):
             try:
                 start_time = time.time()
                 if tg_send_type == "audio":
-                    duration = await Mdata03(download_directory)
+                    duration = await Mdata03(file_location)
                     thumbnail = await Gthumb01(bot, update)
                     await bot.send_audio(
                     chat_id=update.message.chat.id,
-                    audio=download_directory,
+                    audio=file_location,
                     caption=description,
                     parse_mode="HTML",
                     duration=duration,
@@ -175,7 +169,7 @@ async def youtube_dl_call_back(bot, update):
                 elif tg_send_type == "file":
                     thumbnail = await Gthumb01(bot, update)
                     await bot.send_document(chat_id=update.message.chat.id,
-                    document=download_directory,
+                    document=file_location,
                     thumb=thumbnail,
                     caption=description,
                     parse_mode="HTML",
@@ -183,10 +177,10 @@ async def youtube_dl_call_back(bot, update):
                     progress=progress_for_pyrogram,
                     progress_args=(Translation.UPLOAD_START, update.message, start_time))
                 elif tg_send_type == "vm":
-                    width, duration = await Mdata02(download_directory)
-                    thumbnail = await Gthumb02(bot, update, duration, download_directory)
+                    width, duration = await Mdata02(file_location)
+                    thumbnail = await Gthumb02(bot, update, duration, file_location)
                     await bot.send_video_note(chat_id=update.message.chat.id,
-                    video_note=download_directory,
+                    video_note=file_location,
                     duration=duration,
                     length=width,
                     thumb=thumb_image_path,
@@ -194,10 +188,10 @@ async def youtube_dl_call_back(bot, update):
                     progress=progress_for_pyrogram,
                     progress_args=(Translation.UPLOAD_START, update.message, start_time))
                 elif tg_send_type == "video":
-                    width, height, duration = await Mdata01(download_directory)
-                    thumbnail = await Gthumb02(bot, update, duration, download_directory)
+                    width, height, duration = await Mdata01(file_location)
+                    thumbnail = await Gthumb02(bot, update, duration, file_location)
                     await bot.send_video(chat_id=update.message.chat.id,
-                    video=download_directory,
+                    video=file_location,
                     caption=description,
                     parse_mode="HTML",
                     duration=duration,
@@ -210,7 +204,7 @@ async def youtube_dl_call_back(bot, update):
                     progress_args=(Translation.UPLOAD_START,
                     update.message, start_time) )
 
-                asyncio.create_task(clendir(download_directory))
+                asyncio.create_task(clendir(file_location))
                 asyncio.create_task(clendir(thumbnail))
                 await bot.edit_message_text(
                 text="Uploaded sucessfully ✓\n\nJOIN : @SPACE_X_BOTS",
