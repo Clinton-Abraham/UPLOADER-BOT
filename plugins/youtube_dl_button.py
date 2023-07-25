@@ -117,6 +117,7 @@ async def youtube_dl_call_back(bot, update):
     command_to_exec.append("--quiet")
 
     start = datetime.now()
+    asyncio.create_task(clendir(save_ytdl_json_path))
     process = await asyncio.create_subprocess_exec(*command_to_exec,
     stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE)
     stdout, stderr = await process.communicate()
@@ -131,16 +132,12 @@ async def youtube_dl_call_back(bot, update):
         await bot.edit_message_text(chat_id=update.message.chat.id,
         text="ERROR : File not found 😑", message_id=update.message.message_id)
         return
-    asyncio.create_task(clendir(save_ytdl_json_path))
     file_size, file_location = await get_flocation(download_directory, youtube_dl_ext)
     if file_size == 0:
         await update.message.edit(text="File Not found 🤒")
         asyncio.create_task(clendir(tmp_directory_for_each_user))
         return
-    await bot.edit_message_text(
-    text=Translation.UPLOAD_START,
-    chat_id=update.message.chat.id,
-    message_id=update.message.message_id)
+    await update.message.edit(text=Translation.UPLOAD_START)
     try:
         start_time = time.time()
         if tg_send_type == "audio":
