@@ -113,3 +113,23 @@ async def Mdata03(download_directory):
                   duration = metadata.get('duration').seconds
 
           return duration
+
+async def get_flocation(download_directory):
+    try:
+        file_size = os.stat(download_directory).st_size
+        return file_size, download_directory
+    except Exception:
+        pass
+    try:
+        download_directory = download_directory + ".mkv"
+        file_size = os.stat(download_directory).st_size
+        return file_size, download_directory
+    except Exception:
+        pass
+    try:
+        download_directory = os.path.splitext(download_directory)[0] + ".mkv"
+        file_size = os.stat(download_direcdownload_directorytory).st_size
+        return file_size, download_directory
+    except Exception:
+        return False, download_directory
+    
