@@ -1,12 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Modified By > @Clinton_Abraham
-
-import logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
-logger = logging.getLogger(__name__)
-
 import os
 import json
 import math
@@ -21,7 +12,6 @@ from translation import Translation
 from plugins.custom_thumbnail import *
 from pyrogram.types import InputMediaPhoto
 from helper_funcs.display_progress import progress_for_pyrogram, humanbytes
-
 
 async def youtube_dl_call_back(bot, update):
     try:
@@ -89,10 +79,11 @@ async def youtube_dl_call_back(bot, update):
         file_name = custom_file_name
 
     command_to_exec = []
+    command_to_exec.append("--quiet")
+    command_to_exec.append("--no-warnings")
     download_directory = tmp_directory_for_each_user + "/" + str(file_name)
     if tg_send_type == "audio":
         command_to_exec = ["yt-dlp", "-c",
-        "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
         "--prefer-ffmpeg", "--extract-audio",
         "--audio-format", youtube_dl_ext,
         "--audio-quality", youtube_dl_format,
@@ -102,7 +93,6 @@ async def youtube_dl_call_back(bot, update):
         if "youtu" in youtube_dl_url:
             minus_f_format = youtube_dl_format + "+bestaudio"
         command_to_exec = ["yt-dlp", "-c",
-        "--max-filesize", str(Config.TG_MAX_FILE_SIZE),
         "--embed-subs", "-f", minus_f_format,
         "--hls-prefer-ffmpeg", youtube_dl_url,
         "-o", download_directory]
@@ -113,8 +103,6 @@ async def youtube_dl_call_back(bot, update):
     if youtube_dl_password is not None:
         command_to_exec.append("--password")
         command_to_exec.append(youtube_dl_password)
-    command_to_exec.append("--no-warnings")
-    command_to_exec.append("--quiet")
 
     start = datetime.now()
     asyncio.create_task(clendir(save_ytdl_json_path))
@@ -134,7 +122,7 @@ async def youtube_dl_call_back(bot, update):
         return
     file_size, file_location = await get_flocation(download_directory, youtube_dl_ext)
     if file_size == 0:
-        await update.message.edit(text="File Not found 🤒")
+        await update.message.edit(text="ERROR : File Not found 🙁")
         asyncio.create_task(clendir(tmp_directory_for_each_user))
         return
     await update.message.edit(text=Translation.UPLOAD_START)
