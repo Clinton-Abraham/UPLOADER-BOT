@@ -134,7 +134,7 @@ async def youtube_dl_call_back(bot, update):
         chat_id=update.message.chat.id,
         message_id=update.message.message_id,
         text=error_message)
-        return False
+        return
     if t_response:
         asyncio.create_task(clendir(save_ytdl_json_path))
         try:
@@ -222,6 +222,9 @@ async def youtube_dl_call_back(bot, update):
                 asyncio.create_task(clendir(download_directory))
                 await bot.edit_message_text(text=Translation.ERROR.format(e),
                 chat_id=update.message.chat.id, message_id=update.message.message_id)
+    else:
+        await bot.edit_message_text(chat_id=update.message.chat.id,
+        text="ERROR : File not found 😑", message_id=update.message.message_id)
 
 #=================================
 
