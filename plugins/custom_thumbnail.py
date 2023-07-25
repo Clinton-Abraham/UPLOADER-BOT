@@ -131,5 +131,5 @@ async def get_flocation(download_directory):
         file_size = os.stat(download_direcdownload_directorytory).st_size
         return file_size, download_directory
     except Exception:
-        return False, download_directory
+        return 0, download_directory
     
