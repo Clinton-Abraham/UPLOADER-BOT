@@ -1,29 +1,16 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# (c) Shrimadhav U K | Modifieded By : @DC4_WARRIOR
-
-# the logging things
-import logging
-logging.basicConfig(level=logging.DEBUG,
-                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger(__name__)
-
-import random
-import numpy
 import os
-from PIL import Image
 import time
-
+import numpy
+import random
+from PIL import Image
 from config import Config
-# the Strings used for this "thing"
-from translation import Translation
-from pyrogram import Client as Clinton
-from database.access import clinton
-from hachoir.metadata import extractMetadata
-from hachoir.parser import createParser
-logging.getLogger("pyrogram").setLevel(logging.WARNING)
 from pyrogram import filters
+from translation import Translation
+from database.access import clinton
 from database.adduser import AddUser
+from pyrogram import Client as Clinton
+from hachoir.parser import createParser
+from hachoir.metadata import extractMetadata
 from helper_funcs.help_Nekmo_ffmpeg import take_screen_shot
 
 @Clinton.on_message(filters.private & filters.photo)
