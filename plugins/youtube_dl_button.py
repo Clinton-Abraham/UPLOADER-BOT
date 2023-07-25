@@ -79,7 +79,7 @@ async def youtube_dl_call_back(bot, update):
     command_to_exec = []
     command_to_exec.append("--quiet")
     command_to_exec.append("--no-warnings")
-    download_directory = tmp_directory_for_each_user + "/" + str(file_name)
+    download_directory = tmp_directory_for_each_user + "/" + str(file_name) + "." + youtube_dl_ext
     if tg_send_type == "audio":
         command_to_exec = ["yt-dlp", "-c",
         "--prefer-ffmpeg", "--extract-audio",
