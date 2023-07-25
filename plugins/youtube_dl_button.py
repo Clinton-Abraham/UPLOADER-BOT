@@ -228,5 +228,9 @@ async def clendir(directory):
         os.remove(directory)
     except:
         pass
+    try:
+        shutil.rmtree(directory)
+    except:
+        pass
 
 #=================================
