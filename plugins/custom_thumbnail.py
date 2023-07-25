@@ -114,22 +114,33 @@ async def Mdata03(download_directory):
 
           return duration
 
-async def get_flocation(download_directory):
+async def get_flocation(download_directory, extension):
     try:
         file_size = os.stat(download_directory).st_size
         return file_size, download_directory
     except Exception:
         pass
     try:
-        download_directory = download_directory + ".mkv"
-        file_size = os.stat(download_directory).st_size
-        return file_size, download_directory
+        file_directory = download_directory + ".mkv"
+        file_size = os.stat(file_directory).st_size
+        return file_size, file_directory
     except Exception:
         pass
     try:
-        download_directory = os.path.splitext(download_directory)[0] + ".mkv"
-        file_size = os.stat(download_direcdownload_directorytory).st_size
+        file_directory = download_directory + "." + extension
+        file_size = os.stat(file_directory).st_size
+        return file_size, file_directory
+    except Exception:
+        pass
+    try:
+        file_directory = os.path.splitext(download_directory)[0] + ".mkv"
+        file_size = os.stat(file_directory).st_size
+        return file_size, file_directory
+    except Exception:
+        pass
+    try:
+        file_directory = os.path.splitext(download_directory)[0] + "." + extension
+        file_size = os.stat(file_directory).st_size
         return file_size, download_directory
     except Exception:
-        return 0, download_directory
-    
+        return 0, file_directory
