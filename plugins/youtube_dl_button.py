@@ -125,14 +125,9 @@ async def youtube_dl_call_back(bot, update):
     stdout, stderr = await process.communicate()
     e_response = stderr.decode().strip()
     t_response = stdout.decode().strip()
-
-    ad_string_to_replace = "please report this issue on https://yt-dl.org/bug . Make sure you are using the latest version; see  https://yt-dl.org/update  on how to update. Be sure to call youtube-dl with the --verbose flag and include its complete output."
-    if e_response and ad_string_to_replace in e_response:
-        error_message = e_response.replace(ad_string_to_replace, "")
-        await bot.edit_message_text(
-        chat_id=update.message.chat.id,
-        message_id=update.message.message_id,
-        text=error_message)
+    if e_response:
+        await bot.edit_message_text(chat_id=update.message.chat.id,
+        message_id=update.message.message_id, text="ERROR : Download failed ⚠️")
         return
     if t_response:
         asyncio.create_task(clendir(save_ytdl_json_path))
