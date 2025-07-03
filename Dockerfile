@@ -1,4 +1,4 @@
-FROM clintonabraham/clinton:latest
+FROM dc4warrior/clinton:latest
 
 COPY requirements.txt .
 
